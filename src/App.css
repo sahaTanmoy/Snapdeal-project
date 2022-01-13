@@ -19,6 +19,7 @@
 
 .fsize1{
   line-height: 5px;
+  font-size: 14px;
   background-color: brown;
 }
 
@@ -31,6 +32,11 @@
   position: sticky;
   top: 0;
 }
+
+.ingcls{
+  max-height:60%;
+  max-width:60%;
+} 
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

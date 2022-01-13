@@ -1,5 +1,5 @@
 import axios from "axios"
-import { FETCH_PRODUCTS_FAILURE, FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS } from "./productTypes"
+import { FETCH_PRODUCTS_FAILURE, FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS,FETCH_PRODUCT_DETAILS } from "./productTypes"
 
 export const fetchProductRequest =()=> {
     return {
@@ -37,5 +37,12 @@ export const fetchProducts=()=>{
             console.log(errorMsg);
             dispatch(fetchProductFailure(errorMsg))
         })
+    }
+}
+
+export const selectedProduct=(product)=>{
+    return{
+        type: FETCH_PRODUCT_DETAILS,
+        payload: product,
     }
 }
