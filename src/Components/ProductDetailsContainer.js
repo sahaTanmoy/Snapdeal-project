@@ -39,10 +39,8 @@ function ProductDetailsContainer() {
                             <tr><h1>{title}</h1></tr>
                             <tr>{description}</tr>
                             <tr><b>Category: {category}</b></tr>
-                            <tr>
-                                <td><h3>Rating: {rating?.rate}({rating&&rating.count})</h3></td>
-                                <td><h3><FaRupeeSign />{price}</h3></td>
-                            </tr>
+                            <tr><h5>Rating: {rating?.rate}({rating&&rating.count})</h5></tr>
+                            <tr><h3><FaRupeeSign />. {price}</h3></tr>
                         </td>
                     </tr>
                 </table>
