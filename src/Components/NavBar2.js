@@ -1,10 +1,11 @@
 import React from 'react'
+import { AiOutlineShoppingCart,AiOutlineUser } from 'react-icons/ai';
 
 import { Container, Navbar, Nav, Image, InputGroup, FormControl } from 'react-bootstrap'
 
 function NavBar2() {
     return (
-        <div>
+        <div className='fsize2'>
             <Navbar bg="danger" variant="dark" className='navSnap'>
                     <Container>
                         <Navbar.Brand href="#home"><Image src="https://i3.sdlcdn.com/img/snapdeal/darwin/logo/sdLatestLogo.svg" /></Navbar.Brand>
@@ -15,19 +16,14 @@ function NavBar2() {
                         </InputGroup></span>
                         <Nav >
                             <Nav.Link href="#">
-                                Cart
-                                <i className="fas fa-shopping-cart"></i>
+                                Cart 
+                                <AiOutlineShoppingCart />
+
                             </Nav.Link>
-                            <Nav.Link href="#">Sign In</Nav.Link>
-
-
-
-                            {/* <Nav.Link href="#">HelpCenter</Nav.Link>
-                            <Nav.Link href="#">Sell on Snapdeal</Nav.Link>
                             <Nav.Link href="#">
-                                <Image src="https://i4.sdlcdn.com/img/platinum09/downloadappicon2ndsep.png" />
-                                Download App
-                            </Nav.Link> */}
+                                Sign In
+                                <AiOutlineUser />
+                            </Nav.Link>
                             
                         </Nav>
                     </Container>

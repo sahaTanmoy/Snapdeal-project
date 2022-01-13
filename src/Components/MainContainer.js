@@ -12,7 +12,9 @@ function MainContainer() {
             {/* <h1>Snapdeal</h1> */}
             <>
                 <NavBar1 />
-                <NavBar2 />
+                <div className='navbar2cls'>
+                    <NavBar2 />
+                </div>
                 <ProductContainer />
 
             </>

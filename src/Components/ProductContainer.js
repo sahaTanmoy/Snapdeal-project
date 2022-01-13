@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { fetchProducts } from '../redux/Products/productActions'
+import { FaRupeeSign } from 'react-icons/fa'
 
 function ProductContainer({ productData, fetchProducts }) {
     useEffect(() => {
@@ -15,36 +16,31 @@ function ProductContainer({ productData, fetchProducts }) {
         <h2>{productData.error}</h2>
     ) : (
         <div>
-            <h2>Product List</h2>
-            <div>
+            <h2>Our Products</h2>
+            <div className='container'>
+                <div className='row'>
+                    {
+                        productData && productData.products &&
+                        productData.products.map(product =>
+                            <div className='col mb-5'>
+                                {/* <p>{product.title} {product.price}</p> */}
 
-                {
-                    productData && productData.products &&
-                    productData.products.map(product =>
-                        <div>
-                            {/* <p>{product.title} {product.price}</p> */}
 
-                            <Container>
-                                <Row md={2} className='g-4'>
-                                    <Col>
-                                        <Card style={{ width: '25rem' }}>
-                                            <Card.Img variant="top" src={product.image} />
-                                            <Card.Body>
-                                                <Card.Title>{product.title}</Card.Title>
-                                                <Card.Text>{product.description}</Card.Text>
-                                                <Card.Text><b>RS. {product.price}</b></Card.Text>
-                                                <Card.Text>Rating: {product.rating.rate}({product.rating.count})</Card.Text>
-                                                <Button variant="primary">View Product</Button>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                </Row>
-                            </Container>
-                            
-                        </div>
-                    )
-                }
-
+                                <Card style={{ width: '20rem' }}>
+                                    <Card.Img variant="top" src={product.image} className='imgclass' />
+                                    <Card.Body>
+                                        <Card.Title>{product.title}</Card.Title>
+                                        
+                                        <Card.Text><b><FaRupeeSign /> {product.price}</b></Card.Text>
+                                        <Card.Text>Rating: {product.rating.rate}({product.rating.count})</Card.Text>
+                                        <Card.Text>Category: {product.category}</Card.Text>
+                                        <Button variant="primary">View Product</Button>
+                                    </Card.Body>
+                                </Card>
+                            </div>
+                        )
+                    }
+                </div>
             </div>
         </div>
     )

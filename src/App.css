@@ -12,6 +12,26 @@
   top: 0;
 }
 
+.imgclass{
+  max-height:300px;
+  
+}
+
+.fsize1{
+  line-height: 5px;
+  background-color: brown;
+}
+
+.fsize2{
+  font-size: 15px;
+}
+
+.navbar2cls{
+  /* position: -webkit-sticky; */
+  position: sticky;
+  top: 0;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
