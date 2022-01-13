@@ -28,10 +28,10 @@ function ProductContainer({ productData, fetchProducts }) {
                                 {/* <p>{product.title} {product.price}</p> */}
 
                                 
-                                <Card style={{ width: '20rem' }}>
+                                <Card style={{ width: '20rem' }} className='deco'>
                                 <Link to={`/products/${product.id}`}>
-                                    <Card.Img variant="top" src={product.image} className='imgclass' />
-                                    <Card.Body>
+                                    <Card.Img variant="top" src={product.image} className='imgclass deco' />
+                                    <Card.Body className='deco'>
                                         <Card.Title>{product.title}</Card.Title>
                                         
                                         <Card.Text><b><FaRupeeSign /> {product.price}</b></Card.Text>
