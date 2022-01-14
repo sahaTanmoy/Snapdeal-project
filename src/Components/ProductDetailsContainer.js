@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import {selectedProduct} from "../redux/Products/productActions"
-import { Container } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import { FaRupeeSign } from 'react-icons/fa'
 
 function ProductDetailsContainer() {
@@ -41,6 +41,10 @@ function ProductDetailsContainer() {
                             <tr><b>Category: {category}</b></tr>
                             <tr><h5>Rating: {rating?.rate}({rating&&rating.count})</h5></tr>
                             <tr><h3><FaRupeeSign />. {price}</h3></tr>
+                            <tr>
+                                {/* <td><h5>Rating: {rating?.rate}({rating&&rating.count})</h5></td> */}
+                                <td><Button variant='danger'>Add To Cart</Button></td>
+                            </tr>
                         </td>
                     </tr>
                 </table>

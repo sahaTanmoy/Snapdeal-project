@@ -4,13 +4,13 @@ import { connect } from 'react-redux'
 import { fetchProducts } from '../redux/Products/productActions'
 import { FaRupeeSign } from 'react-icons/fa'
 import { Link, Route, Routes } from 'react-router-dom'
-import ProductDetailsContainer from './ProductDetailsContainer'
+// import ProductDetailsContainer from './ProductDetailsContainer'
 
 function ProductContainer({ productData, fetchProducts }) {
     useEffect(() => {
         fetchProducts()
     }, [])
-    console.log("loading in container:", productData.loading);
+    // console.log("loading in container:", productData.loading);
     
     return productData.loading ? (
         <h2>loading..</h2>
@@ -19,34 +19,41 @@ function ProductContainer({ productData, fetchProducts }) {
     ) : (
         <div>
             <h2>Our Products</h2>
-            <div className='container'>
-                <div className='row'>
+            {/* <div className='container'> */}
+            <Container>
+                {/* <div className='row'> */}
+                <Row>
                     {
                         productData && productData.products &&
                         productData.products.map(product =>
-                            <div className='col mb-5'>
+                            // <div className='col mb-5'>
+                            <Col className='mb-5'>
                                 {/* <p>{product.title} {product.price}</p> */}
 
                                 
-                                <Card style={{ width: '20rem' }} className='deco'>
-                                <Link to={`/products/${product.id}`}>
-                                    <Card.Img variant="top" src={product.image} className='imgclass deco' />
-                                    <Card.Body className='deco'>
+                                <Card style={{ width: '20rem' }} >
+                                
+                                    <Card.Img variant="top" src={product.image} className='imgclass' />
+                                    <Card.Body>
                                         <Card.Title>{product.title}</Card.Title>
                                         
                                         <Card.Text><b><FaRupeeSign /> {product.price}</b></Card.Text>
                                         <Card.Text>Rating: {product.rating.rate}({product.rating.count})</Card.Text>
                                         <Card.Text>Category: {product.category}</Card.Text>
-                                        {/* <Button variant="primary">View Product</Button> */}
+                                        <Link to={`/products/${product.id}`} className='deco'>
+                                            <Button variant="primary">View Product</Button>
+                                        </Link>
                                     </Card.Body>
-                                </Link>
-                                </Card>
                                 
-                            </div>
+                                </Card>
+                            </Col>    
+                            // </div>
                         )
                     }
-                </div>
-            </div>
+                </Row>
+                {/* </div> */}
+            </Container>
+            {/* </div> */}
         </div>
     )
 
