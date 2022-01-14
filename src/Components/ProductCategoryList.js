@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Dropdown } from 'react-bootstrap'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { fetchProductCategory } from '../redux/Products/productCategoryActions'
 
 function ProductCategoryList({ ProductCategory, fetchProductCategory }) {
@@ -20,9 +21,13 @@ function ProductCategoryList({ ProductCategory, fetchProductCategory }) {
                     <Dropdown.Divider />
                     {
                         ProductCategory.categories.map(Category =>
+                            
                             <Dropdown.Item>
+                                <Link to={`/category/${Category}`} className='deco'>
                                 {Category}
+                                </Link>
                             </Dropdown.Item>
+                            
                         )}
                 </Dropdown.Menu>
             </Dropdown>

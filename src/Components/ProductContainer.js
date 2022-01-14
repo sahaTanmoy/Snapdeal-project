@@ -19,7 +19,7 @@ function ProductContainer({ productData, fetchProducts }) {
         <h2>{productData.error}</h2>
     ) : (
         <div>
-            <h2>Our Products</h2>
+            <br/><h2>Our Products</h2><br/>
             {/* <div className='container'> */}
             <Container>
                 {/* <div className='row'> */}
@@ -61,6 +61,7 @@ function ProductContainer({ productData, fetchProducts }) {
 }
 
 const mapStateToProps = state => {
+    console.log("HomeState",state.allproduct);
     return {
         productData: state.allproduct
     }

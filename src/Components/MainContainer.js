@@ -2,6 +2,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import store from '../redux/store'
+import CategoryProductContainer from './CategoryProductContainer'
 import NavBar1 from './NavBar1'
 import NavBar2 from './NavBar2'
 import ProductCategoryList from './ProductCategoryList'
@@ -24,6 +25,7 @@ function MainContainer() {
             <Routes>
                     <Route path="/" exact element={<ProductContainer />} />
                     <Route path="/products/:id" element={<ProductDetailsContainer />} />
+                    <Route path="/category/:category" element={<CategoryProductContainer />} />
             </Routes>
         </div>
         </BrowserRouter>

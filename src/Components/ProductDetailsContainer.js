@@ -32,9 +32,10 @@ function ProductDetailsContainer() {
             {/* <h1>{title}</h1>
             <h2>Rs. {price}</h2> */}
             <Container>
-            <>
+            
                 <br /><br /><br /><br />
                 <table>
+                    <>
                     <tr>
                         <td><img src={image} className='ingcls'/></td>
                         <td>
@@ -49,8 +50,9 @@ function ProductDetailsContainer() {
                             </tr>
                         </td>
                     </tr>
+                    </>
                 </table>
-            </>
+            
             </Container>
         </div>
     )
