@@ -14,7 +14,7 @@ function CategoryProductContainer({ cateoryProduct, fetchCategoryProducts }) {
     useEffect(() => {
         fetchCategoryProducts(category)
         // console.log(fetchCategoryProducts(category));
-    }, [])
+    }, [category])
 
     return (
         <div>
