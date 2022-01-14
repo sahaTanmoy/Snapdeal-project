@@ -4,7 +4,9 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import {selectedProduct} from "../redux/Products/productActions"
 import { Button, Container } from 'react-bootstrap';
-import { FaRupeeSign } from 'react-icons/fa'
+import { FaRupeeSign, FaRegStar } from 'react-icons/fa'
+import { AiOutlineStar } from 'react-icons/ai';
+
 
 function ProductDetailsContainer() {
     const product= useSelector(state => state.product);
@@ -39,7 +41,7 @@ function ProductDetailsContainer() {
                             <tr><h1>{title}</h1></tr>
                             <tr>{description}</tr>
                             <tr><b>Category: {category}</b></tr>
-                            <tr><h5>Rating: {rating?.rate}({rating&&rating.count})</h5></tr>
+                            <tr><h5>Rating: {rating?.rate}<AiOutlineStar /> ({rating&&rating.count})</h5></tr>
                             <tr><h3><FaRupeeSign />. {price}</h3></tr>
                             <tr>
                                 {/* <td><h5>Rating: {rating?.rate}({rating&&rating.count})</h5></td> */}
@@ -53,5 +55,6 @@ function ProductDetailsContainer() {
         </div>
     )
 }
+
 
 export default ProductDetailsContainer

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import store from '../redux/store'
 import NavBar1 from './NavBar1'
 import NavBar2 from './NavBar2'
+import ProductCategoryList from './ProductCategoryList'
 import ProductContainer from './ProductContainer'
 import ProductDetailsContainer from './ProductDetailsContainer'
 
@@ -18,6 +19,7 @@ function MainContainer() {
                 <div className='navbar2cls'>
                     <NavBar2 />
                 </div>
+            
                 {/* <ProductContainer /> */}
             <Routes>
                     <Route path="/" exact element={<ProductContainer />} />

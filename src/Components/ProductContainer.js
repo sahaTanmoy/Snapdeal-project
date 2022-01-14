@@ -3,6 +3,7 @@ import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { fetchProducts } from '../redux/Products/productActions'
 import { FaRupeeSign } from 'react-icons/fa'
+import { AiOutlineStar } from 'react-icons/ai';
 import { Link, Route, Routes } from 'react-router-dom'
 // import ProductDetailsContainer from './ProductDetailsContainer'
 
@@ -38,7 +39,7 @@ function ProductContainer({ productData, fetchProducts }) {
                                         <Card.Title>{product.title}</Card.Title>
                                         
                                         <Card.Text><b><FaRupeeSign /> {product.price}</b></Card.Text>
-                                        <Card.Text>Rating: {product.rating.rate}({product.rating.count})</Card.Text>
+                                        <Card.Text>Rating: {product.rating.rate}<AiOutlineStar /> ({product.rating.count})</Card.Text>
                                         <Card.Text>Category: {product.category}</Card.Text>
                                         <Link to={`/products/${product.id}`} className='deco'>
                                             <Button variant="primary">View Product</Button>
