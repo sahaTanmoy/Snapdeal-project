@@ -17,10 +17,12 @@ function MainContainer() {
         <BrowserRouter>
         <div>
             {/* <h1>Snapdeal</h1> */}
+            
             <NavBar1 />
-                <div className='navbar2cls'>
-                    <NavBar2 />
-                </div>
+            
+            <div className='navbar2cls'>
+                <NavBar2 />
+            </div>
             
                 {/* <ProductContainer /> */}
             <Routes>

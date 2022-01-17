@@ -39,6 +39,13 @@
   max-width:60%;
 } 
 
+.logincls{
+  margin: 100px 300px;
+  border-style: solid;
+  border-color: coral;
+  padding: 30px 30px;
+}
+
 .deco{
   text-decoration: none;
 }
