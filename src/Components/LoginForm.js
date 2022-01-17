@@ -18,7 +18,7 @@ function LoginForm({userData, fetchUsers}) {
                 <Form className='logincls'>
                     <Form.Label>Email Address</Form.Label>
                     <Form.Control type="email" placeholder='Enter Email Address' 
-                    value={email} onChange={e=>setEmail(e.target.value)}></Form.Control>
+                    value={email} onChange={e=>setEmail(e.target.value.toLowerCase())}></Form.Control>
 
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder='Enter Password' 
