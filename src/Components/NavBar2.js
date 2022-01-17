@@ -24,9 +24,11 @@ function NavBar2() {
                                 <AiOutlineShoppingCart />
 
                             </Nav.Link>
-                            <Nav.Link href="#">
+                            <Nav.Link>
+                                <Link to={`/login`} className='deco'>
                                 Sign In
                                 <AiOutlineUser />
+                                </Link>
                             </Nav.Link>
                             
                         </Nav>
