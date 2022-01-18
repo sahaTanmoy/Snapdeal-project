@@ -1,21 +1,30 @@
 import React, { useEffect } from 'react'
+import { Container } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+
 import { fetchUserCart } from '../redux/Products/userCartActions'
 
 function UserCartContainer({cart,fetchUserCart}) {
     const { userid } = useParams()
     useEffect(() => {
         fetchUserCart(userid)
-    }, [])
+    }, [userid])
     console.log(cart);
     const totalCart=cart&&cart.cart&&cart.cart
     console.log("Total cart of user",userid, ":" ,totalCart);
-    // const totalCart2=totalCart&&totalCart.products&&totalCart.products
-    // console.log("Products",totalCart2);
+    const totalCart2=totalCart.map(
+        cart=>cart.products.map(
+            pro=>pro.productId
+        )
+    )
+    console.log("Products",totalCart2);
     return (
         <div>
+            <Container>
+            <h1>Cart</h1>
             {
+                totalCart.length?
                 totalCart.map(cart=>
                 <div key={cart.id}>
                     <h1>User Id: {cart.userId}</h1>
@@ -23,15 +32,20 @@ function UserCartContainer({cart,fetchUserCart}) {
                     {
                         cart.products.map(pro=>
                             <div key={pro.productId}>
-                                <h1>Product Id: {pro.productId} Quantity:{pro.quantity}</h1>
+                                <h1>Product Id: 
+                                    <Link to={`/products/${pro.productId}`} className='deco'>{pro.productId} </Link>
+                                    Quantity:{pro.quantity}</h1>
                             </div>
                             )
                             
                     }
                     <hr />
+                    
                 </div>
                 )
+                :<h1>The Cart is empty</h1>
             }
+            
             {/* {
                 totalCart&&totalCart.products.map(cart=>
                 <div key={cart.userid}>
@@ -40,6 +54,7 @@ function UserCartContainer({cart,fetchUserCart}) {
                 </div>
                 )
             } */}
+            </Container>
         </div>
     )
 }

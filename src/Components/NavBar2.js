@@ -3,10 +3,12 @@ import { AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai';
 import { Dropdown } from 'react-bootstrap'
 
 import { Container, Navbar, Nav, Image, InputGroup, FormControl } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import ProductCategoryList from './ProductCategoryList';
 
 function NavBar2() {
+    // const { userid } = useParams()
+    // console.log("Navbar2 id:", userid);
     return (
         <div className='fsize2 navSnap'>
             <Navbar bg="danger" variant="dark" className='navSnap' >
