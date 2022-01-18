@@ -6,9 +6,10 @@ import CategoryProductContainer from './CategoryProductContainer'
 import LoginForm from './LoginForm'
 import NavBar1 from './NavBar1'
 import NavBar2 from './NavBar2'
-import ProductCategoryList from './ProductCategoryList'
+// import ProductCategoryList from './ProductCategoryList'
 import ProductContainer from './ProductContainer'
 import ProductDetailsContainer from './ProductDetailsContainer'
+import UserCartContainer from './UserCartContainer'
 
 function MainContainer() {
     return (
@@ -30,6 +31,7 @@ function MainContainer() {
                     <Route path="/products/:id" element={<ProductDetailsContainer />} />
                     <Route path="/category/:category" element={<CategoryProductContainer />} />
                     <Route path="/login" element={<LoginForm />} />
+                    <Route path="/carts/user/:userid" element={<UserCartContainer />} />
             </Routes>
         </div>
         </BrowserRouter>

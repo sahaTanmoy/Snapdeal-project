@@ -21,13 +21,13 @@ function ProductCategoryList({ ProductCategory, fetchProductCategory }) {
                     <Dropdown.Divider />
                     {
                         ProductCategory.categories.map(Category =>
-                            
+                            <div key={Category}>
                             <Dropdown.Item>
                                 <Link to={`/category/${Category}`} className='deco'>
                                 {Category}
                                 </Link>
                             </Dropdown.Item>
-                            
+                            </div>
                         )}
                 </Dropdown.Menu>
             </Dropdown>

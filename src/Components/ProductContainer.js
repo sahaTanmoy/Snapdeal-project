@@ -27,7 +27,8 @@ function ProductContainer({ productData, fetchProducts }) {
                     {
                         productData && productData.products &&
                         productData.products.map(product =>
-                            // <div className='col mb-5'>
+                            
+                            //  {/* <div className='col mb-5'> */}
                             <Col className='mb-5'>
                                 {/* <p>{product.title} {product.price}</p> */}
 
@@ -47,7 +48,8 @@ function ProductContainer({ productData, fetchProducts }) {
                                     </Card.Body>
                                 
                                 </Card>
-                            </Col>    
+                            </Col>
+                            // </div>    
                             // </div>
                         )
                     }

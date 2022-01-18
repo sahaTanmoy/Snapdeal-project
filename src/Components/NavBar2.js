@@ -21,8 +21,10 @@ function NavBar2() {
                         </InputGroup></span>
                     <Nav >
                         <Nav.Link href="#">
-                            Cart
+                            {/* <Link to={`/carts/user/${userid}`} className='deco'> */}
+                                Cart
                             <AiOutlineShoppingCart />
+                            {/* </Link> */}
 
                         </Nav.Link>
                         <Nav.Link>

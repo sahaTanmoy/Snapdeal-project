@@ -24,7 +24,7 @@ function CategoryProductContainer({ cateoryProduct, fetchCategoryProducts }) {
 
                     {cateoryProduct && cateoryProduct.categoryProducts && cateoryProduct.categoryProducts.map(product =>
                         // <h1>{product.title}</h1>
-
+                        // <div key={product.id}>
                         <Col className='mb-5'>
                             <Card style={{ width: '20rem' }} >
 
@@ -42,6 +42,7 @@ function CategoryProductContainer({ cateoryProduct, fetchCategoryProducts }) {
 
                             </Card>
                         </Col>
+                        // </div>
                     )}
 
                 </Row>

@@ -1,21 +1,31 @@
 import React, {useEffect,useState} from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import {fetchUsers} from "../redux/Products/userActions"
 
 function LoginForm({userData, fetchUsers}) {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
+    const [entry,setEntry]=useState({})
 
     useEffect(() => {
         fetchUsers()
     }, [])
+    const individualuser = userData && userData.users && userData.users.filter(user=>((user.email === entry.email)&&(user.password === entry.password)))
+    // console.log("Individualuser:",individualuser);
     
+    const submitForm=(e)=>{
+        e.preventDefault();
+        setEntry({email:email,password: password})
+        // console.log("Submit entry",entry.email);
+    }
+
     return (
         <div>
             <>
             <Container>
-                <Form className='logincls'>
+                <Form className='logincls' onSubmit={submitForm}>
                     <Form.Label>Email Address</Form.Label>
                     <Form.Control type="email" placeholder='Enter Email Address' 
                     value={email} onChange={e=>setEmail(e.target.value.toLowerCase())}></Form.Control>
@@ -31,12 +41,17 @@ function LoginForm({userData, fetchUsers}) {
 
             <div>
                 {
-                    userData && userData.users &&
-                    userData.users.filter(user=>((user.email === email)&&(user.password === password))).map(user=>
+                    // userData && userData.users &&
+                    // userData.users.filter(user=>((user.email === email)&&(user.password === password)))
+                    individualuser.length?individualuser.map(user=>
                         // (user.email === email)?
-                        <h1> Welcome {user.name.firstname} {user.name.lastname}</h1>
-                        // :<p>Enter right credentials {user.email}</p>
-                        )
+                        <div key={user.id}>
+                        <h1> Welcome {user.name.firstname} {user.name.lastname}-{user.id}</h1>
+                        <Link to={`/carts/user/${user.id}`} className='deco'>
+                        <Button variant='danger'>Show Cart</Button></Link>
+                         {/* :<p>Enter right credentials {user.email}</p> */}
+                        </div>
+                        ):(<h1>Wrong credentials</h1>)
                 }
             </div>
         </div>

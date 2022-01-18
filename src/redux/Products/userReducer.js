@@ -1,11 +1,11 @@
-import { FETCH_USERS_FAILURE, FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS } from "./userTypes"
+import { FETCH_USERS_FAILURE, FETCH_USERS_SUCCESS } from "./userTypes"
 
 const initialState = {
     users: [],
     error: ''
 }
 
-const reducer=(state=initialState,action3)=>{
+const userReducer=(state=initialState,action3)=>{
     switch(action3.type){
         
         case FETCH_USERS_SUCCESS:
@@ -28,4 +28,4 @@ const reducer=(state=initialState,action3)=>{
     }
 }
 
-export default reducer
+export default userReducer
