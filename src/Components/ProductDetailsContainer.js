@@ -1,30 +1,37 @@
 import React, { useEffect } from 'react'
 import axios from 'axios';
 import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
-import {selectedProduct} from "../redux/Products/productActions"
+import { connect, useDispatch, useSelector } from 'react-redux';
+import {fetchProductDetails} from "../redux/Products/productDetailsActions"
 import { Button, Container } from 'react-bootstrap';
 import { FaRupeeSign, FaRegStar } from 'react-icons/fa'
 import { AiOutlineStar } from 'react-icons/ai';
 
 
-function ProductDetailsContainer() {
-    const product= useSelector(state => state.product);
-    const {title, description, image, price, category,rating}=product
+function ProductDetailsContainer({individualProduct,fetchProductDetails}) {
+    // const product= useSelector(state => state.product);
+    // const {title, description, image, price, category,rating}=product
     const {id}= useParams()
-    console.log(id);
-    const dispatch= useDispatch()
+    // console.log(id);
+    
+    const particularProduct=individualProduct && individualProduct.product
+    const {title, description, image, price, category,rating}=particularProduct
+    // console.log("Individual Product",individualProduct);
+    // console.log("particular Product",particularProduct);
+    // console.log("Product Title",particularProduct.title);
+
+    // const dispatch= useDispatch()
     // console.log(title);
-    const fetchProductDetails= async ()=>{
-        console.log("Data fetching")
-        const response1= await axios.get(`https://fakestoreapi.com/products/${id}`)
-                                    .catch(err=>{console.log("Err:",err);});
-        console.log(response1.data);
-        dispatch(selectedProduct(response1.data));
-    }
+    // const fetchProductDetails= async ()=>{
+    //     console.log("Data fetching")
+    //     const response1= await axios.get(`https://fakestoreapi.com/products/${id}`)
+    //                                 .catch(err=>{console.log("Err:",err);});
+    //     console.log(response1.data);
+    //     dispatch(selectedProduct(response1.data));
+    // }
 
     useEffect(() => {
-        fetchProductDetails()
+        fetchProductDetails(id)
     }, [])
     
     return (
@@ -32,7 +39,6 @@ function ProductDetailsContainer() {
             {/* <h1>{title}</h1>
             <h2>Rs. {price}</h2> */}
             <Container>
-            
                 <br /><br /><br /><br />
                 <table>
                     <>
@@ -51,12 +57,25 @@ function ProductDetailsContainer() {
                         </td>
                     </tr>
                     </>
-                </table>
+                </table> 
             
             </Container>
         </div>
     )
 }
 
+const mapStateToProps=state=>{
+    // console.log("state",state);
+    return{
+        individualProduct: state.product
+    }
+}
 
-export default ProductDetailsContainer
+const mapDispatchToProps = dispatch =>{
+    // console.log("Dispatch function Called");
+    return{
+        fetchProductDetails:(id)=>dispatch(fetchProductDetails(id))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(ProductDetailsContainer)

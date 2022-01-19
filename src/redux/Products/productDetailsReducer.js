@@ -1,15 +1,16 @@
-import { FETCH_PRODUCT_DETAILS } from "./productTypes"
+import { FETCH_PRODUCT_DETAILS } from "./productDetailsTypes"
 
-// const initialState = {
-//     product: {}
-// }
+const initialState = {
+    product: []
+}
 
-const productDetailsReducer=(state={}, action)=> {
-    switch(action.type){
+const productDetailsReducer=(state=initialState, action5)=> {
+    switch(action5.type){
         case FETCH_PRODUCT_DETAILS: 
+            
             return {
                 ...state, 
-                ...action.payload }
+                product: action5.payload }
         default:
             return state
     }
