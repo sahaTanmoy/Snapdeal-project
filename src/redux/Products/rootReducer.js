@@ -5,6 +5,7 @@ import productCategoryReducer from "./productCategoryReducer";
 import productDetailsReducer from "./productDetailsReducer";
 import reducer from "./productReducer";
 import userCartReducer from "./userCartReducer";
+import cartProductDetailsReducer from "./cartProductDetailsReducer";
 
 const rootReducer=combineReducers({
     allproduct: reducer,
@@ -12,7 +13,8 @@ const rootReducer=combineReducers({
     category: productCategoryReducer,
     categoryProduct: categoryProductReducer,
     user: userReducer,
-    cart: userCartReducer
+    cart: userCartReducer,
+    cartproduct: cartProductDetailsReducer
 }
 )
 

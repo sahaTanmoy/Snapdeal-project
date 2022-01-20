@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { connect, useDispatch, useSelector } from 'react-redux';
 import {fetchProductDetails} from "../redux/Products/productDetailsActions"
 import { Button, Container } from 'react-bootstrap';
-import { FaRupeeSign, FaRegStar } from 'react-icons/fa'
+import { FaRupeeSign } from 'react-icons/fa'
 import { AiOutlineStar } from 'react-icons/ai';
 
 
@@ -52,7 +52,7 @@ function ProductDetailsContainer({individualProduct,fetchProductDetails}) {
                             <tr><h3><FaRupeeSign />. {price}</h3></tr>
                             <tr>
                                 {/* <td><h5>Rating: {rating?.rate}({rating&&rating.count})</h5></td> */}
-                                <td><Button variant='danger'>Add To Cart</Button></td>
+                                {/* <td><Button variant='danger'>Add To Cart</Button></td> */}
                             </tr>
                         </td>
                     </tr>

@@ -20,7 +20,7 @@ export const fetchUserCart=(userid)=>{
         axios.get(`https://fakestoreapi.com/carts/user/${userid}`)
         .then(response4=>{
             const carts= response4.data
-            console.log(carts);
+            // console.log(carts);
             dispatch(fetchUserCartSuccess(carts))
         })
         .catch(error=>{

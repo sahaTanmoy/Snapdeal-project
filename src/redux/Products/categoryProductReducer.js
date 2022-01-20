@@ -6,7 +6,7 @@ const initialState={
 }
 
 const categoryProductReducer=(state=initialState,action2)=> {
-    console.log(state.categoryProducts);
+    // console.log(state.categoryProducts);
     switch(action2.type){
         case FETCH_CATEGORY_PRODUCTS:
             console.log("Products", action2.payload);

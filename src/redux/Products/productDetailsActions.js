@@ -14,8 +14,9 @@ export const fetchProductDetails=(id)=>{
         axios.get(`https://fakestoreapi.com/products/${id}`)
         .then(response6=>{
             const productdetails= response6.data
-            console.log(productdetails);
+            console.log(9999,productdetails);
             dispatch(selectedProduct(productdetails))
+            // return (productdetails)
         })
         .catch(error=>{
             const errorMsg=error.message
