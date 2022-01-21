@@ -14,7 +14,7 @@ function UserCartContainer({cart,fetchUserCart}) {
     }, [])
 
     
-    // console.log(cart);
+    // console.log(555,cart);
 
     const totalCart=cart&&cart.cart
     // console.log("Total cart of user",userid, ":" ,totalCart);
@@ -59,7 +59,7 @@ function UserCartContainer({cart,fetchUserCart}) {
 
     // console.log("Product Title",title);
 
-    return (
+    return cart.loading?(<h2>Loading..</h2>):(cart.error?(<h2>{cart.error}</h2>):(
         <div>
             <Container>
             <h1>Cart</h1>
@@ -106,7 +106,7 @@ function UserCartContainer({cart,fetchUserCart}) {
             } */}
             </Container>
         </div>
-    )
+    ))
 }
 
 const mapStateToProps =state=>{

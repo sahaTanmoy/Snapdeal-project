@@ -25,7 +25,7 @@ export const fetchProductFailure =error=> {
 
 export const fetchProducts=()=>{
     return (dispatch)=>{
-        dispatch(fetchProductRequest)
+        dispatch(fetchProductRequest())
         axios.get('https://fakestoreapi.com/products')
         .then(response=>{
             const products= response.data

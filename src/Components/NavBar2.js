@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai';
 import { Dropdown } from 'react-bootstrap'
 
@@ -7,6 +7,7 @@ import { Link, useParams } from 'react-router-dom';
 import ProductCategoryList from './ProductCategoryList';
 
 function NavBar2() {
+    
     // const { userid } = useParams()
     // console.log("Navbar2 id:", userid);
     return (
@@ -22,13 +23,13 @@ function NavBar2() {
                             <InputGroup.Text>Search</InputGroup.Text>
                         </InputGroup></span>
                     <Nav >
-                        <Nav.Link href="#">
-                            {/* <Link to={`/carts/user/${userid}`} className='deco'> */}
+                        {/* <Nav.Link href="#">
+                            
                                 Cart
                             <AiOutlineShoppingCart />
-                            {/* </Link> */}
+                            
 
-                        </Nav.Link>
+                        </Nav.Link> */}
                         <Nav.Link>
                             {/* <Link to={`/login`} className='deco'>
                                 Sign In
@@ -41,12 +42,15 @@ function NavBar2() {
 
                                     <Dropdown.Menu>
                                         
-                                        <Dropdown.Item><Link to={`/login`} className='deco'>My Account</Link></Dropdown.Item>
+                                        <Dropdown.Item>
+                                            <Link to={`/login`} className='deco'>My Account</Link>
+                                        </Dropdown.Item>
                                         <Dropdown.Item>My Wishlist</Dropdown.Item>
                                         {/* <Dropdown.Item>My Cart</Dropdown.Item> */}
                                         
                                     <Dropdown.Divider />
-                                    <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
+                                    
+                                    <Dropdown.Item><Link to='/'>Logout</Link></Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             

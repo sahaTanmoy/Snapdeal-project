@@ -16,7 +16,7 @@ function Demo(props) {
     // console.log(111,props.individualCartProduct.cartproduct.map(cartproduct=>cartproduct.id));
     useEffect(() => {
         // console.log(props.fetchProductDetails(props.id),props.individualProduct)
-        console.log(props.fetchCartProductDetails(props.id),props.individualCartProduct) 
+        props.fetchCartProductDetails(props.id)
     }, []);
     
   return <div>

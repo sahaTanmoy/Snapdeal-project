@@ -10,13 +10,13 @@ import { Link, Route, Routes } from 'react-router-dom'
 function CategoryProductContainer({ cateoryProduct, fetchCategoryProducts }) {
     const { category } = useParams()
     console.log(category);
-    console.log("CategoryProduct Container: ", cateoryProduct.categoryProducts);
+    console.log("CategoryProduct Container: ", cateoryProduct);
     useEffect(() => {
         fetchCategoryProducts(category)
         // console.log(fetchCategoryProducts(category));
     }, [category])
 
-    return (
+    return cateoryProduct.loading?(<h2>{category} Products are loading. Please wait..</h2>):cateoryProduct.error?(<h2>{cateoryProduct.error}</h2>):(
         <div>
             <Container>
                 <br/><h2>Category: {category}</h2><br/>
