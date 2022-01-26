@@ -75,6 +75,8 @@ function LoginForm(props1) {
             )}
 
             <div>
+                <Container>
+                    
                 {
                     // userData && userData.users &&
                     // userData.users.filter(user=>((user.email === email)&&(user.password === password)))
@@ -88,6 +90,8 @@ function LoginForm(props1) {
                         </div>
                     )) : (<h1>Enter right credentials</h1>)
                 }
+                
+                </Container>
             </div>
 
         </div>

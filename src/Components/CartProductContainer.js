@@ -10,7 +10,7 @@ import { fetchCartProductDetails } from '../redux/Products/cartProductDetailsAct
 import { fetchUserCart } from '../redux/Products/userCartActions'
 
 
-function Demo(props) {
+function CartProductContainer(props) {
     // console.log(999,props,props.individualProduct.product.id);
     console.log(999999999,props);
     // console.log(111,props.individualCartProduct.cartproduct.map(cartproduct=>cartproduct.id));
@@ -68,6 +68,6 @@ const mapDispatchToProps =dispatch=>{
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Demo)
+export default connect(mapStateToProps,mapDispatchToProps)(CartProductContainer)
 
 // export default Demo;

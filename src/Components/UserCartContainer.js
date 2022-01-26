@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom'
 import { fetchProductDetails } from '../redux/Products/productDetailsActions'
 
 import { fetchUserCart } from '../redux/Products/userCartActions'
-import Demo from './Demo'
+import CartProductContainer from './CartProductContainer'
 
 function UserCartContainer({cart,fetchUserCart}) {
     const { userid } = useParams()
@@ -82,7 +82,7 @@ function UserCartContainer({cart,fetchUserCart}) {
                                     
                                 <h1>Quantity:{pro.quantity}</h1>
                                 <h1>{title}</h1> */}
-                                <Demo id={pro.productId} quantity={pro.quantity}/>
+                                <CartProductContainer id={pro.productId} quantity={pro.quantity}/>
                             </div>
                             
                             )
