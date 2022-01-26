@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Button, Card, Col, Container, Row } from 'react-bootstrap'
+import { Button, Card, Col, Container, Row, Spinner } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { fetchProducts } from '../redux/Products/productActions'
 import { FaRupeeSign } from 'react-icons/fa'
@@ -14,9 +14,9 @@ function ProductContainer({ productData, fetchProducts }) {
     // console.log("loading in container:", productData.loading);
     
     return productData.loading ? (
-        <h2>loading..</h2>
+        <div className='loader'><Spinner animation="border" /><h2>loading..</h2></div>
     ) : productData.error ? (
-        <h2>{productData.error}</h2>
+        <h2 className='errmsg'>{productData.error}</h2>
     ) : (
         <div>
             <br/><h2>Our Products</h2><br/>

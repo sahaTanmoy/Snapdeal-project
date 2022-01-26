@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Spinner } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { fetchProductDetails } from '../redux/Products/productDetailsActions'
@@ -59,7 +59,7 @@ function UserCartContainer({cart,fetchUserCart}) {
 
     // console.log("Product Title",title);
 
-    return cart.loading?(<h2>Loading..</h2>):(cart.error?(<h2>{cart.error}</h2>):(
+    return cart.loading?(<div className='loader'><Spinner animation="border" /><h2>Loading..</h2></div>):(cart.error?(<h2 className='errmsg'>{cart.error}</h2>):(
         <div>
             <Container>
             <h1>Cart</h1>

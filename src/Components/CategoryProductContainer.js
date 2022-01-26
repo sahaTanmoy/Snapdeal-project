@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { fetchCategoryProducts } from '../redux/Products/categoryProductActions';
-import { Button, Card, Col, Container, Row } from 'react-bootstrap'
+import { Button, Card, Col, Container, Row, Spinner } from 'react-bootstrap'
 import { FaRupeeSign } from 'react-icons/fa'
 import { AiOutlineStar } from 'react-icons/ai';
 import { Link, Route, Routes } from 'react-router-dom'
@@ -16,7 +16,7 @@ function CategoryProductContainer({ cateoryProduct, fetchCategoryProducts }) {
         // console.log(fetchCategoryProducts(category));
     }, [category])
 
-    return cateoryProduct.loading?(<h2>{category} Products are loading. Please wait..</h2>):cateoryProduct.error?(<h2>{cateoryProduct.error}</h2>):(
+    return cateoryProduct.loading?(<div className='loader'><Spinner animation="border" /><h2>{category} Products are loading. Please wait..</h2></div>):cateoryProduct.error?(<h2 className='errmsg'>{cateoryProduct.error}</h2>):(
         <div>
             <Container>
                 <br/><h2>Category: {category}</h2><br/>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom'
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { fetchProductDetails } from "../redux/Products/productDetailsActions"
-import { Button, Container } from 'react-bootstrap';
+import { Button, Container, Spinner } from 'react-bootstrap';
 import { FaRupeeSign } from 'react-icons/fa'
 import { AiOutlineStar } from 'react-icons/ai';
 
@@ -35,7 +35,7 @@ function ProductDetailsContainer({ individualProduct, fetchProductDetails }) {
     }, [])
 
     return  individualProduct.loading?
-    (<h2>The product is loading. Please wait..</h2>):(individualProduct.error?(<h2>{individualProduct.error}</h2>):(
+    (<div className='loader'><Spinner animation="border" /><h2>The product is loading. Please wait..</h2></div>):(individualProduct.error?(<h2 className='errmsg'>{individualProduct.error}</h2>):(
         <div>
             {/* <h1>{title}</h1>
             <h2>Rs. {price}</h2> */}

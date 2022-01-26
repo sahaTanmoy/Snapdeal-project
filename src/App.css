@@ -50,6 +50,20 @@
   text-decoration: none;
 }
 
+.loader{
+  margin: 300px;
+  border: blue;
+  border-style: dashed;
+  border-width: 0.5px;
+}
+
+.errmsg{
+  margin: 300px;
+  border: red;
+  border-style: double;
+  
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
