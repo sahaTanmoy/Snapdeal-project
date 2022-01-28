@@ -1,25 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Container, Form, Modal } from 'react-bootstrap'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { connect, useDispatch } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
 import { fetchUsers } from "../redux/Products/userActions"
+import { isAuthenticated } from '../redux/Products/userAuthActions'
 
 function LoginForm(props1) {
+    const dispatch = useDispatch()
+    
     // {userData, fetchUsers}=props1
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [entry, setEntry] = useState({})
+    const navigate = useNavigate()
+    
 
     useEffect(() => {
         props1.fetchUsers()
     }, [])
     const individualuser = props1.userData && props1.userData.users && props1.userData.users.filter(user => ((user.email === entry.email) && (user.password === entry.password)))
-    // console.log("Individualuser:",individualuser);
+    console.log("Individualuser1:",individualuser[0]);
+    individualuser.length?dispatch(isAuthenticated(true,individualuser[0])):dispatch(isAuthenticated(false,{}))
+    
+    
 
-    const submitForm = (e) => {
+    const handleSubmitForm = (e) => {
         e.preventDefault();
-        setEntry({ email: email, password: password })
-        // console.log("Submit entry",entry.email);
+        setEntry({ email: email, password: password })    
     }
 
     return (
@@ -27,7 +34,7 @@ function LoginForm(props1) {
 
             {/* <>
             <Container>
-                <Form className='logincls' onSubmit={submitForm}>
+                <Form className='logincls' onSubmit={handleSubmitForm}>
                     <Form.Label>Email Address</Form.Label>
                     <Form.Control type="email" placeholder='Enter Email Address' 
                     value={email} onChange={e=>setEmail(e.target.value.toLowerCase())}></Form.Control>
@@ -41,7 +48,6 @@ function LoginForm(props1) {
             </Container>
             </> */}
 
-            {individualuser.length ? "" : (
                 <>
                     <Modal
                         {...props1}
@@ -55,7 +61,7 @@ function LoginForm(props1) {
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form onSubmit={submitForm}>
+                            <Form onSubmit={handleSubmitForm}>
                                 <Form.Label>Email Address</Form.Label>
                                 <Form.Control type="email" placeholder='Enter Email Address'
                                     value={email} onChange={e => setEmail(e.target.value.toLowerCase())}></Form.Control>
@@ -72,7 +78,6 @@ function LoginForm(props1) {
                     </Modal>
                     
                 </>
-            )}
 
             <div>
                 <Container>
@@ -80,15 +85,9 @@ function LoginForm(props1) {
                 {
                     // userData && userData.users &&
                     // userData.users.filter(user=>((user.email === email)&&(user.password === password)))
-                    individualuser.length ? (individualuser.map(user =>
-                        // (user.email === email)?
-                        <div key={user.id}>
-                            <h1> Welcome {user.name.firstname} {user.name.lastname}</h1><h1>Your User Id -{user.id}</h1>
-                            <Link to={`/carts/user/${user.id}`} className='deco'>
-                                <Button variant='danger'>Show Cart</Button></Link>
-                            {/* :<p>Enter right credentials {user.email}</p> */}
-                        </div>
-                    )) : (<h1>Enter right credentials</h1>)
+                    individualuser.length ?
+                     (navigate("/", { replace: true })
+                    ) : (<h1>Enter right credentials</h1>)
                 }
                 
                 </Container>
@@ -99,6 +98,7 @@ function LoginForm(props1) {
 }
 
 const mapStateToProps = state => {
+    console.log(11111,state);
     return {
         userData: state.user
     }

@@ -6,6 +6,8 @@ import productDetailsReducer from "./productDetailsReducer";
 import reducer from "./productReducer";
 import userCartReducer from "./userCartReducer";
 import cartProductDetailsReducer from "./cartProductDetailsReducer";
+import authReducer from "./userAuthReducer";
+
 
 const rootReducer=combineReducers({
     allproduct: reducer,
@@ -14,7 +16,8 @@ const rootReducer=combineReducers({
     categoryProduct: categoryProductReducer,
     user: userReducer,
     cart: userCartReducer,
-    cartproduct: cartProductDetailsReducer
+    cartproduct: cartProductDetailsReducer,
+    AuthStatus: authReducer
 }
 )
 

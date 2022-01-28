@@ -50,6 +50,11 @@
   text-decoration: none;
 }
 
+.deco2{
+  text-decoration: none;
+  color: white;
+}
+
 .loader{
   margin: 300px;
   border: blue;

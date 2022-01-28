@@ -51,7 +51,7 @@ function CartProductContainer(props) {
 }
 
 const mapStateToProps =state=>{
-    // console.log("individualProduct3",state);
+    console.log(66,state);
     // const individualProduct=[]
     return{
         // cart: state.cart,

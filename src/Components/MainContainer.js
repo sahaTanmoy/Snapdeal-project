@@ -2,21 +2,27 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import store from '../redux/store'
+
 import CategoryProductContainer from './CategoryProductContainer'
 import LoginForm from './LoginForm'
+import LogoutContainer from './LogoutContainer'
 import ModalLog from './ModalLog'
 import NavBar1 from './NavBar1'
 import NavBar2 from './NavBar2'
+import NoMatch from './NoMatch'
 // import ProductCategoryList from './ProductCategoryList'
 import ProductContainer from './ProductContainer'
 import ProductDetailsContainer from './ProductDetailsContainer'
 import UserCartContainer from './UserCartContainer'
+import UserProfileContainer from './UserProfileContainer'
 
 function MainContainer() {
     return (
         
         <Provider store={store}>
+            
         <BrowserRouter>
+        
         <div>
             {/* <h1>Snapdeal</h1> */}
             
@@ -32,11 +38,19 @@ function MainContainer() {
                     <Route path="/products/:id" element={<ProductDetailsContainer />} />
                     <Route path="/category/:category" element={<CategoryProductContainer />} />
                     <Route path="/login" element={<ModalLog />} />
-                    <Route path="/carts/user/:userid" element={<UserCartContainer />} />
+                    <Route path="/user/:userid/carts" element={<UserCartContainer />} />
+                    <Route path="/user/:userid/profile" element={<UserProfileContainer />} />
+                    <Route path="/logout" element={<LogoutContainer />} />
+                    <Route path="*" element={<NoMatch />} />
             </Routes>
+            
         </div>
+        
+        
         </BrowserRouter>
+        
         </Provider>
+        
         
     )
 }

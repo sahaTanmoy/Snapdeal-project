@@ -50,10 +50,10 @@ function ProductDetailsContainer({ individualProduct, fetchProductDetails }) {
                                 <tr>{description}</tr>
                                 <tr><b>Category: {category}</b></tr>
                                 <tr><h5>Rating: {rating?.rate}<AiOutlineStar /> ({rating && rating.count})</h5></tr>
-                                <tr><h3><FaRupeeSign />. {price}</h3></tr>
+                                <tr><h3><FaRupeeSign /> {price}</h3></tr>
                                 <tr>
                                     {/* <td><h5>Rating: {rating?.rate}({rating&&rating.count})</h5></td> */}
-                                    {/* <td><Button variant='danger'>Add To Cart</Button></td> */}
+                                    <td><Button variant='danger'>Add To Cart</Button></td>
                                 </tr>
                             </td>
                         </tr>

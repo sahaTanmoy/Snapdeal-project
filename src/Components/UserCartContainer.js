@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { Container, Spinner } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { fetchProductDetails } from '../redux/Products/productDetailsActions'
 
 import { fetchUserCart } from '../redux/Products/userCartActions'
@@ -9,6 +10,9 @@ import CartProductContainer from './CartProductContainer'
 
 function UserCartContainer({cart,fetchUserCart}) {
     const { userid } = useParams()
+    const status = useSelector(state => state.AuthStatus.AuthStatus)
+    const navigate = useNavigate()
+    
     useEffect(() => {
         fetchUserCart(userid)
     }, [])
@@ -60,7 +64,9 @@ function UserCartContainer({cart,fetchUserCart}) {
     // console.log("Product Title",title);
 
     return cart.loading?(<div className='loader'><Spinner animation="border" /><h2>Loading..</h2></div>):(cart.error?(<h2 className='errmsg'>{cart.error}</h2>):(
+        
         <div>
+            {status?(
             <Container>
             <h1>Cart</h1>
             {
@@ -104,13 +110,13 @@ function UserCartContainer({cart,fetchUserCart}) {
                 </div>
                 )
             } */}
-            </Container>
+            </Container>):navigate("/login")}
         </div>
     ))
 }
 
 const mapStateToProps =state=>{
-    // console.log("individualProduct",state.product);
+    console.log(6,state);
     return{
         cart: state.cart,
         // individualProduct: state.product
