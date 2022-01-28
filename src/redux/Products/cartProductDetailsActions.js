@@ -1,10 +1,17 @@
 import axios from "axios";
-import { FETCH_CART_PRODUCT_DETAILS } from "./cartProductDetailsTypes"
+import { FETCH_CART_PRODUCT_DETAILS, REMOVE_CART_PRODUCT_DETAILS } from "./cartProductDetailsTypes"
 
 export const selectedCartProduct=(cartproduct)=>{
     return{
         type: FETCH_CART_PRODUCT_DETAILS,
         payload: cartproduct
+    }
+}
+
+export const removeSelectedCartProduct=()=>{
+    return{
+        type: REMOVE_CART_PRODUCT_DETAILS
+        // payload: cartproduct
     }
 }
 

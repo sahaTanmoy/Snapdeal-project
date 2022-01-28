@@ -3,7 +3,7 @@ import { Container, Table } from 'react-bootstrap'
 import { FaRupeeSign } from 'react-icons/fa'
 import { connect } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { fetchCartProductDetails } from '../redux/Products/cartProductDetailsActions'
+import { fetchCartProductDetails, removeSelectedCartProduct } from '../redux/Products/cartProductDetailsActions'
 // import { fetchProductDetails } from '../redux/Products/productDetailsActions'
 
 
@@ -17,6 +17,10 @@ function CartProductContainer(props) {
     useEffect(() => {
         // console.log(props.fetchProductDetails(props.id),props.individualProduct)
         props.fetchCartProductDetails(props.id)
+        return ()=>{
+            console.log(5555555555555,"cleanup");
+            props.removeSelectedCartProduct()
+        }
     }, []);
     
   return <div>
@@ -37,9 +41,10 @@ function CartProductContainer(props) {
                                     {/* </Link> */}
                                 </h1></tr>
                                 <tr>
-                                    <td><h3><FaRupeeSign />{cartproduct.price}</h3>per item</td>
+                                    <td><FaRupeeSign />{cartproduct.price} per item</td>
                                     <td>QUANTITY:{props.quantity}</td>
                                 </tr>
+                                <tr><h3>Total Price:<FaRupeeSign />{cartproduct.price * props.quantity }</h3></tr>
                             </td>
                         </tr>
                     </>
@@ -64,7 +69,8 @@ const mapDispatchToProps =dispatch=>{
     return{
         // fetchUserCart:(userid)=> dispatch(fetchUserCart(userid)),
         // fetchProductDetails:(id)=>dispatch(fetchProductDetails(id))
-        fetchCartProductDetails:(id)=>dispatch(fetchCartProductDetails(id))
+        fetchCartProductDetails:(id)=>dispatch(fetchCartProductDetails(id)),
+        removeSelectedCartProduct:()=>dispatch(removeSelectedCartProduct())
     }
 }
 

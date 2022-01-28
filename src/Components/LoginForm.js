@@ -61,16 +61,16 @@ function LoginForm(props1) {
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form onSubmit={handleSubmitForm}>
-                                <Form.Label>Email Address</Form.Label>
-                                <Form.Control type="email" placeholder='Enter Email Address'
+                            <Form onSubmit={handleSubmitForm} >
+                                <Form.Label className='mb-3'>Email Address</Form.Label>
+                                <Form.Control className='mb-3' type="email" placeholder='Enter Email Address'
                                     value={email} onChange={e => setEmail(e.target.value.toLowerCase())}></Form.Control>
 
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder='Enter Password'
+                                <Form.Label className='mb-3'>Password</Form.Label>
+                                <Form.Control className='mb-3' type="password" placeholder='Enter Password'
                                     value={password} onChange={e => setPassword(e.target.value)}></Form.Control>
 
-                                <Button variant='danger' type='submit' onClick={props1.onHide}>Sign In</Button>
+                                <Button className='mb-3' variant='danger' type='submit' onClick={props1.onHide}>Sign In</Button>
 
                             </Form>
                         </Modal.Body>
