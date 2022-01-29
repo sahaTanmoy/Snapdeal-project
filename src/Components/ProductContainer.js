@@ -24,37 +24,38 @@ function ProductContainer({ productData, fetchProducts }) {
             <Container>
                 {/* <div className='row'> */}
                 <Row>
+                
                     {
                         productData && productData.products &&
-                        productData.products.map(product =>
+                        productData.products.map(product =>                           
                             
-                            //  {/* <div className='col mb-5'> */}
                             <Col className='mb-5'>
-                                {/* <p>{product.title} {product.price}</p> */}
+                                
 
                                 
                                 <Card style={{ width: '20rem' }} >
-                                
+                                <Link to={`/products/${product.id}`} className='deco'>
                                     <Card.Img variant="top" src={product.image} className='imgclass' />
+                                    <hr />
                                     <Card.Body>
                                         <Card.Title>{product.title}</Card.Title>
                                         
                                         <Card.Text><b><FaRupeeSign /> {product.price}</b></Card.Text>
                                         <Card.Text>Rating: {product.rating.rate}<AiOutlineStar /> ({product.rating.count})</Card.Text>
                                         <Card.Text>Category: {product.category}</Card.Text>
-                                        <Link to={`/products/${product.id}`} className='deco'>
-                                            <Button variant="primary">View Product</Button>
-                                        </Link>
+                                        
                                     </Card.Body>
-                                
+                                    </Link>
                                 </Card>
                             </Col>
                             // </div>    
                             // </div>
                         )
                     }
+                    
                 </Row>
                 {/* </div> */}
+                
             </Container>
             {/* </div> */}
         </div>
