@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import store from '../redux/store'
 
 import CategoryProductContainer from './CategoryProductContainer'
+import ReduxUserCart from './ReduxUserCart'
 import LoginForm from './LoginForm'
 import LogoutContainer from './LogoutContainer'
 import ModalLog from './ModalLog'
@@ -42,6 +43,7 @@ function MainContainer() {
                     <Route path="/user/:userid/profile" element={<UserProfileContainer />} />
                     <Route path="/logout" element={<LogoutContainer />} />
                     <Route path="*" element={<NoMatch />} />
+                    <Route path="/user/:userid/usercart" element={<ReduxUserCart />} />
             </Routes>
             
         </div>

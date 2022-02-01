@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai';
 import { BsPower } from 'react-icons/bs'
-import { Button, Dropdown } from 'react-bootstrap'
+import { Badge, Button, Dropdown } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
 import { Container, Navbar, Nav, Image, InputGroup, FormControl } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -13,6 +13,14 @@ import { FaRegUser } from 'react-icons/fa';
 function NavBar2() {
     const status = useSelector(state => state.AuthStatus.AuthStatus)
     const user = useSelector(state => state.AuthStatus.AuthUser)
+    const cartProduct = useSelector(state => state.cartproduct.cartproduct)
+    // const len=cartProduct.length?(cartProduct.map(cart=>cart.products.length)):0
+    // console.log(15, len );
+    // const totallen=len.reduce((acc=0,curr)=>{
+    //     acc=acc+curr
+    //     return acc
+    // })
+    // console.log(225, totallen );
     console.log("user", user);
     const navigate = useNavigate()
     // const { userid } = useParams()
@@ -27,19 +35,22 @@ function NavBar2() {
                     <ProductCategoryList />
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse className="justify-content-end">
-                        <Nav className="me-auto">
+                        <Nav className="justify-content-center alignbase">
                     <span>
 
                         <InputGroup>
-                            <FormControl placeholder='Search products & Brands'></FormControl>
-                            <InputGroup.Text>Search</InputGroup.Text>
-                        </InputGroup></span>
-                    
+                            <FormControl placeholder='Search products & Brands '></FormControl>
+                            <Button variant="dark">Search</Button>
+                        </InputGroup>
+                        </span>
+                        </Nav>
+                        <Nav className="alignbase">
                             {status &&
                                 <Nav.Link>
-                                    <Link to={`/user/${user.id}/carts`} className='deco2'>
-                                        Cart
-                                        <AiOutlineShoppingCart /></Link>
+                                    <Link to={`/user/${user.id}/usercart`} className='deco2'>
+                                    {/* <Link to={`/user/${user.id}/carts`} className='deco2'> */}
+                                        Cart<AiOutlineShoppingCart /><Badge pill bg="light" text="dark">{cartProduct.length}</Badge>
+                                        </Link>
                                 </Nav.Link>}
                             <Nav.Link >
                                 {/* <Link to={`/login`} className='deco'>

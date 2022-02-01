@@ -1,13 +1,33 @@
-import React, { useEffect } from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { Dropdown } from 'react-bootstrap'
 import { AiOutlineMenu } from 'react-icons/ai'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { fetchProductCategory } from '../redux/Products/productCategoryActions'
+// import { fetchProductCategory } from '../redux/Products/productCategoryActions'
 
 function ProductCategoryList({ ProductCategory, fetchProductCategory }) {
+
+    const [categories, setCategories] = useState([])
+    const [errMsg, setErrMsg] = useState('')
+    const [loader, setLoader] = useState(true)
+
     useEffect(() => {
-        fetchProductCategory()
+        axios.get(`https://fakestoreapi.com/products/categories`)
+            .then(response => {
+                console.log(response);
+                setLoader(false)
+                setCategories(
+                    response.data
+                )
+
+            }).catch(error => {
+                setLoader(false)
+                setErrMsg(
+                    error.message
+                )
+
+            })
     }, [])
     
     return (
@@ -19,8 +39,8 @@ function ProductCategoryList({ ProductCategory, fetchProductCategory }) {
                 <Dropdown.Menu>
                     <Dropdown.Item><b>Our Categories</b></Dropdown.Item>
                     <Dropdown.Divider />
-                    {
-                        ProductCategory.categories.map(Category =>
+                    {loader ?(<Dropdown.Item>Loading..</Dropdown.Item>):(errMsg.length ?(<Dropdown.Item>{errMsg}</Dropdown.Item>):(
+                        categories.map(Category =>
                             <div key={Category}>
                             <Dropdown.Item>
                                 <Link to={`/category/${Category}`} className='deco'>
@@ -28,7 +48,7 @@ function ProductCategoryList({ ProductCategory, fetchProductCategory }) {
                                 </Link>
                             </Dropdown.Item>
                             </div>
-                        )}
+                        )))}
                 </Dropdown.Menu>
             </Dropdown>
 
@@ -36,17 +56,4 @@ function ProductCategoryList({ ProductCategory, fetchProductCategory }) {
     )
 }
 
-const mapStateToProps = state => {
-    console.log(state.category.categories);
-    return {
-        ProductCategory: state.category
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        fetchProductCategory: () => dispatch(fetchProductCategory())
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProductCategoryList)
+export default (ProductCategoryList)

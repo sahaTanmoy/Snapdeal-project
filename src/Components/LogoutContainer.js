@@ -16,6 +16,7 @@ function LogoutContainer() {
     const handleLogout =()=>{
         // alert('Are you sure to logout?')
         dispatch(isAuthenticated(false,{}));
+        alert('You have successfully Loged out');
         navigate("/", { replace: true })
     }
     

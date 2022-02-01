@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Container, Table } from 'react-bootstrap'
+import { Col, Container, Image, Row, Table } from 'react-bootstrap'
 import { FaRupeeSign } from 'react-icons/fa'
 import { connect } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
@@ -30,25 +30,23 @@ function CartProductContainer(props) {
       {props.individualCartProduct.cartproduct.filter(cartproduct=>(props.id===cartproduct.id)).map(cartproduct=>
             <div key={cartproduct.id}>
                 
-                <Table>
-                    <>
-                        <tr>
-                            <td><img  src={cartproduct.image} className="imgclass"></img></td>
-                            <td>
-                                <tr><h1>
-                                    {/* <Link to={`/products/${cartproduct.id}`} className='deco'> */}
-                                        {cartproduct.title}
-                                    {/* </Link> */}
-                                </h1></tr>
-                                <tr>
-                                    <td><FaRupeeSign />{cartproduct.price} per item</td>
-                                    <td>QUANTITY:{props.quantity}</td>
-                                </tr>
-                                <tr><h3>Total Price:<FaRupeeSign />{cartproduct.price * props.quantity }</h3></tr>
-                            </td>
-                        </tr>
-                    </>
-                </Table>
+                <Row className='cartitembox'>
+                    <Col sm={4} className='cartimgbox'>
+                        <Image src={cartproduct.image} className="imgclass" alt={cartproduct.title} />
+                    </Col>
+                    <Col sm>
+                        <Row>
+                        <h1>{cartproduct.title}</h1>
+                        </Row>
+                        <Row>
+                            <Col sm>Price: <FaRupeeSign />{cartproduct.price} per item</Col>
+                            <Col sm>QUANTITY: {props.quantity}</Col>
+                        </Row>
+                        <Row>
+                        <h3>Total Price: <FaRupeeSign />{cartproduct.price * props.quantity }</h3>
+                        </Row>
+                    </Col>
+                </Row>
                 
             </div>
       )}

@@ -34,9 +34,21 @@
   z-index: 1;
 }
 
+.alignbase{
+  align-items: baseline;
+}
+
 .ingcls{
   max-height:60%;
   max-width:60%;
+}
+
+.carouselitem{
+  justify-content: center;
+}
+
+.carouselimg{
+  max-height: 200px;
 } 
 
 .logincls{
@@ -67,6 +79,80 @@
   border: red;
   border-style: double;
   
+}
+
+.productback{
+  background-color: azure;
+}
+
+.profback{
+  background-color: antiquewhite;
+}
+
+.proftabcon{
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.proftabback{
+  background-color: beige;
+  border-radius: 0.25rem;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+  
+}
+
+.profile{
+  float: left;
+  padding-top: 15px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+    
+}
+
+.profdetails{
+  width: 180px;
+  border: 1px solid;
+  padding: 10px;
+  opacity: 0.8;
+}
+
+.hrpersonaliize{
+  color:blue;
+  opacity: 0.8;
+}
+
+.cart{
+  background-color: beige;
+}
+
+.cartbox{
+  background-color: antiquewhite;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)
+}
+
+.cartitembox{
+  padding-left: 30px;
+  padding-right: 20px;
+}
+
+.cartimgbox{
+  background-color: #f8f9fa;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)
+}
+
+.profoot{
+  border: 1px solid;
+  
+  
+}
+
+.footulpersonal{
+  list-style-type: none;
+  opacity: 0.7;
+  font-size: small;
+  padding-right: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

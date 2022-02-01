@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import { Button, Container, Tab, Row, Col, Nav } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Link, Route, useNavigate, useParams } from 'react-router-dom'
-import { fetchUsers } from "../redux/Products/userActions"
+// import { fetchUsers } from "../redux/Products/userActions"
+
 
 import { useSelector } from 'react-redux';
 import UserProfilePersonal from './UserProfilePersonal';
 import UserProfileAddress from './UserProfileAddress';
+import Footer from './Footer';
 
 
 function UserProfileContainer(props) {
@@ -15,13 +17,14 @@ function UserProfileContainer(props) {
     console.log(8, status);
     const { userid } = useParams()
 
-    return <div>
+    return <div className='profback'>
         {status.AuthStatus ? (
             <Container>
-                 <h1> Welcome {status.AuthUser.name.firstname} {status.AuthUser.name.lastname}</h1>
+                <h1> Welcome {status.AuthUser.name.firstname} {status.AuthUser.name.lastname}</h1>
                 <h1>Your User Id - {status.AuthUser.id}</h1>
+                <br />
                 <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-                    <Row>
+                    <Row className='proftabcon'>
                         <Col sm={3}>
                             <Nav variant="pills" className="flex-column">
                                 <Nav.Item>
@@ -32,7 +35,7 @@ function UserProfileContainer(props) {
                                 </Nav.Item>
                             </Nav>
                         </Col>
-                        <Col sm={9}>
+                        <Col sm={9} className='proftabback'>
                             <Tab.Content>
                                 <Tab.Pane eventKey="first">
                                     <UserProfilePersonal phone={status.AuthUser.phone} email={status.AuthUser.email} />
@@ -43,8 +46,10 @@ function UserProfileContainer(props) {
                             </Tab.Content>
                         </Col>
                     </Row>
+                    {/* <br /><br /><br /> */}
                 </Tab.Container>
-               
+                <Footer />
+
                 {/* <p>from UserProfileContainer</p> */}
                 {/* <h1>Address Details:</h1>
                 <h2>House No.: {status.AuthUser.address.number}</h2>
