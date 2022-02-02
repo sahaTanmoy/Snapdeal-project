@@ -65,7 +65,7 @@ function ProductDetailsContainer() {
         (cart.map(cart=>cart.date===currdate?
         (cart.products.length?(cart.products.findIndex(pro=>(pro.productId===particularProduct.id))===-1?(cart.products.push({ "productId": particularProduct.id, "quantity": 1 })):
             (cart.products.map(pro=>(pro.productId===particularProduct.id)?(pro.quantity=pro.quantity+1):null))
-        ):null
+        ):(cart.products.push({ "productId": particularProduct.id, "quantity": 1 }))
 
         // (cart.push(                         X
         //     {

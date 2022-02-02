@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Spinner } from 'react-bootstrap'
+import { Button, Container, Spinner } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 import CartProductContainer from './CartProductContainer'
 import Footer from './Footer'
 
-function Demo() {
+function ReduxUserCart() {
     const { userid } = useParams()
     const status = useSelector(state => state.AuthStatus.AuthStatus)
     const cart = useSelector(state => state.cart)
@@ -89,4 +89,4 @@ function Demo() {
     ))
 }
 
-export default (Demo)
+export default (ReduxUserCart)
