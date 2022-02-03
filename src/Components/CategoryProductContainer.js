@@ -40,20 +40,20 @@ function CategoryProductContainer() {
     return loader ? (<div className='loader'><Spinner animation="border" /><h2>{category} Products are loading. Please wait..</h2></div>) : errMsg.length ? (<h2 className='errmsg'>{errMsg}</h2>) : (
         categoryProducts.length ? (
             <div>
-                <Container>
+
                 <br /><br />
-                        <Carousel variant='dark'>
-                        {categoryProducts.map(product =>
-                            <Carousel.Item className='carouselitem'>
-                                <Image
-                                    className="d-block carouselimg"
-                                    src={product.image}
-                                    alt={product.title}
-                                />
-                            </Carousel.Item>
-                            )}
-                            </Carousel>
-                    
+                <Carousel variant='dark'>
+                    {categoryProducts.map(product =>
+                        <Carousel.Item className='carouselitem'>
+                            <Image
+                                className="d-block carouselimg"
+                                src={product.image}
+                                alt={product.title}
+                            />
+                        </Carousel.Item>
+                    )}
+                </Carousel>
+                <Container>
                     <br /><h2>Category: {category}</h2><br />
                     <Row>
 

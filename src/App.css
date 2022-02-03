@@ -45,11 +45,39 @@
 
 .carouselitem{
   justify-content: center;
+  padding: 35px 0px;
+  z-index: -1;
 }
 
 .carouselimg{
   max-height: 200px;
+  margin: auto; 
 } 
+
+.pgintnbtns{
+  
+  height: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: end;
+}
+
+.pgintnbtns a{
+  padding: 10px;
+  border: 1px solid #dc3545;
+  color: #dc3545;
+  cursor: pointer;
+}
+
+.pgintnbtns a:hover{
+  color: whitesmoke;
+  background-color: #dc3545;
+}
+
+.pgintnactv a{
+  color: whitesmoke;
+  background-color: #dc3545;
+}
 
 .logincls{
   margin: 100px 300px;

@@ -7,15 +7,18 @@ import { fetchCartProductDetails, removeSelectedCartProduct } from '../redux/Pro
 // import { fetchProductDetails } from '../redux/Products/productDetailsActions'
 
 
-import { fetchUserCart } from '../redux/Products/userCartActions'
+// import { fetchUserCart } from '../redux/Products/userCartActions'
 
 
 function CartProductContainer(props) {
-    // console.log(999,props,props.individualProduct.product.id);
+    
     console.log(999999999, props);
 
-    const user = useSelector(state => state.AuthStatus.AuthUser)
-    const cart = useSelector(state => state.cart.cart)
+    // const user = useSelector(state => state.AuthStatus.AuthUser)
+    // const cart = useSelector(state => state.cart.cart)
+
+    const user = props.user
+    const cart = props.cart
 
     const navigate = useNavigate()
 
@@ -23,16 +26,16 @@ function CartProductContainer(props) {
     var currdate = currentdate.getFullYear() + "-" + (currentdate.getMonth() + 1)
         + "-" + currentdate.getDate()
 
-    // console.log(111,props.individualCartProduct.cartproduct.map(cartproduct=>cartproduct.id));
+    
     useEffect(() => {
-        // console.log(props.fetchProductDetails(props.id),props.individualProduct)
+        
         props.fetchCartProductDetails(props.id)
         return () => {
             console.log(5555555555555, "cleanup");
             props.removeSelectedCartProduct()
         }
     }, []);
-    const handleDecrease = (id, qty) => {
+    const handleDecrease = (id) => {
         // cart.length?(cart.findIndex(cart=>cart.date===currdate)===-1?null:
         (cart.map(cart => 
             cart.date === currdate ?
@@ -54,7 +57,7 @@ function CartProductContainer(props) {
         navigate(`/user/${user.id}/usercart`)
     }
 
-    const handleIncrease = (id, qty) => {
+    const handleIncrease = (id) => {
         // cart.length?
         (cart.map(cart => cart.date === currdate ?
             (cart.products.length ?
@@ -79,10 +82,7 @@ function CartProductContainer(props) {
             (cart.products.length?
                 (cart.products.findIndex(pro => (pro.productId === id)) === -1 ?
                     null :
-                    // (cart.products.map(pro => (pro.productId === id) ?
-                    //     pro.quantity != 1 ? (pro.quantity = pro.quantity - 1) : alert(`Item has Quantity ${pro.quantity}. Cannot Decrease Quantity`) :
-                    //     null)
-                    // )
+                    
                     (cart.products.map(pro => (pro.productId === id)?(cart.products.splice(cart.products.findIndex(pro=>(pro.productId===id)),1)):null
                 ))) :
                 null) : null
@@ -95,9 +95,8 @@ function CartProductContainer(props) {
 
     return <div>
 
-        {/* <p>ID:{props.id},QUANTITY: {props.quantity},{props.individualProduct.product.id}</p> */}
-        {/* <p>ID:{props.id},QUANTITY: {props.quantity},{props.individualCartProduct.cartproduct.id}</p> */}
-        {props.individualCartProduct.cartproduct.filter(cartproduct => (props.id === cartproduct.id)).map(cartproduct =>
+        {props.individualCartProduct.loading?(<h3>Loading..</h3>):(
+        props.individualCartProduct.cartproduct.filter(cartproduct => (props.id === cartproduct.id)).map(cartproduct =>
             <div key={cartproduct.id}>
                 
                 <Row className='cartitembox'>
@@ -112,9 +111,9 @@ function CartProductContainer(props) {
                             <Col sm>Price: <FaRupeeSign />{cartproduct.price} per item</Col>
                             <Col sm>
                                 <ButtonGroup >
-                                    <Button variant="outline-danger" onClick={() => handleDecrease(cartproduct.id, props.quantity)}>-</Button>
+                                    <Button variant="outline-danger" onClick={() => handleDecrease(cartproduct.id)}>-</Button>
                                     <Button variant="outline-danger" disabled>{props.quantity}</Button>
-                                    <Button variant="outline-danger" onClick={() => handleIncrease(cartproduct.id, props.quantity)}>+</Button>
+                                    <Button variant="outline-danger" onClick={() => handleIncrease(cartproduct.id)}>+</Button>
                                 </ButtonGroup>
 
                             </Col>
@@ -127,7 +126,7 @@ function CartProductContainer(props) {
                 </Row>
                 
             </div>
-        )}
+        ))}
     </div>;
 }
 
@@ -137,7 +136,9 @@ const mapStateToProps = state => {
     return {
         // cart: state.cart,
         // individualProduct: state.product 
-        individualCartProduct: state.cartproduct
+        individualCartProduct: state.cartproduct,
+        user: state.AuthStatus.AuthUser,
+        cart: state.cart.cart
     }
 }
 

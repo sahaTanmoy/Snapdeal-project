@@ -70,12 +70,7 @@ function NavBar2() {
                                     )}
 
                                     <Dropdown.Menu>
-                                        {!status &&
-                                            <Dropdown.Item>
-                                                <Link to={`/login`} className='deco'>Sign In</Link>
-                                            </Dropdown.Item>}
-                                        {/* <Dropdown.Item>My Wishlist</Dropdown.Item> */}
-                                        {/* <Dropdown.Item>My Cart</Dropdown.Item> */}
+                                        
                                         {status &&
                                             <Dropdown.Item><Link to={`/user/${user.id}/profile`} className='deco'>My Profile</Link></Dropdown.Item>}
 
