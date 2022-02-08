@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai';
+import {CgProfile} from 'react-icons/cg'
 import { BsPower } from 'react-icons/bs'
 import { Badge, Button, Dropdown } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
@@ -36,13 +37,13 @@ function NavBar2() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse className="justify-content-end">
                         <Nav className="justify-content-center alignbase">
-                    <span>
+                    {/* <span> */}
 
                         <InputGroup>
                             <FormControl placeholder='Search products & Brands '></FormControl>
                             <Button variant="dark">Search</Button>
                         </InputGroup>
-                        </span>
+                        {/* </span> */}
                         </Nav>
                         <Nav className="alignbase">
                             {status &&
@@ -61,11 +62,11 @@ function NavBar2() {
                                     {status ? (
                                         <Dropdown.Toggle variant='danger'>
                                             {user.name.firstname}
-                                            <AiOutlineUser />
+                                            <CgProfile />
                                         </Dropdown.Toggle>) : (
                                         <Dropdown.Toggle variant='danger'>
                                             Sign In
-                                            <AiOutlineUser />
+                                            <CgProfile size={20}/>
                                         </Dropdown.Toggle>
                                     )}
 
@@ -79,7 +80,7 @@ function NavBar2() {
                                         {status &&
                                             <Dropdown.Item><Link to='/logout'><BsPower />Sign out</Link></Dropdown.Item>}
                                     </Dropdown.Menu>
-                                </Dropdown>):(<Link to={`/login`} className='deco'><Button variant='danger'>Sign In<FaRegUser /> </Button> </Link>)}
+                                </Dropdown>):(<Link to={`/login`} className='deco'><Button variant='danger'>Sign In <CgProfile size={20} /> </Button> </Link>)}
 
                             </Nav.Link>
 

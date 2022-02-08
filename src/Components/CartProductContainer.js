@@ -38,7 +38,7 @@ function CartProductContainer(props) {
     const handleDecrease = (id) => {
         // cart.length?(cart.findIndex(cart=>cart.date===currdate)===-1?null:
         (cart.map(cart => 
-            cart.date === currdate ?
+            // cart.date === currdate ?
             
             (cart.products.length ?
                 (cart.products.findIndex(pro => (pro.productId === id)) === -1 ?
@@ -49,7 +49,8 @@ function CartProductContainer(props) {
                         // (cart.products.splice(cart.products.findIndex(pro=>(pro.productId===id),1))
                     )
                 ) :
-                null) : null
+                null) 
+                // : null
                 // alert(`Cart is Backdated. Can't Update. Try to update cart of Date: ${currdate}`)
                 ))
         // ):null
@@ -59,7 +60,8 @@ function CartProductContainer(props) {
 
     const handleIncrease = (id) => {
         // cart.length?
-        (cart.map(cart => cart.date === currdate ?
+        (cart.map(cart => 
+            // cart.date === currdate ?
             (cart.products.length ?
                 // (cart.products.findIndex(pro => (pro.productId === id)) === -1 ?
                 //     null :
@@ -68,7 +70,8 @@ function CartProductContainer(props) {
                         // (cart.products.splice(cart.products.findIndex(pro=>(pro.productId===id),1))
                     // )
                 ) :
-                null) : null
+                null) 
+                // : null
                 // alert(`Cart is Backdated. Can't Update. Try to update cart of Date: ${currdate}`)
                 ))
         // :null
@@ -78,14 +81,16 @@ function CartProductContainer(props) {
 
     const handleRemove = (id) => {
         // cart.length?(cart.findIndex(cart=>cart.date===currdate)===-1?null:
-        (cart.map(cart => cart.date === currdate ?
+        (cart.map(cart => 
+            // cart.date === currdate ?
             (cart.products.length?
                 (cart.products.findIndex(pro => (pro.productId === id)) === -1 ?
                     null :
                     
                     (cart.products.map(pro => (pro.productId === id)?(cart.products.splice(cart.products.findIndex(pro=>(pro.productId===id)),1)):null
                 ))) :
-                null) : null
+                null) 
+                // : null
                 // alert(`Cart is Backdated. Can't Update. Try to update cart of Date: ${currdate}`)
                 ))
         // ):null

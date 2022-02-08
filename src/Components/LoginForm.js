@@ -1,6 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Form, Modal } from 'react-bootstrap'
+import { Button, Container, Form, Row, Col, Modal } from 'react-bootstrap'
+// import { Form, Button, Row, Col, Container } from 'react-bootstrap';
+import { GrLocation } from 'react-icons/gr'
+import { IoIosNotificationsOutline } from 'react-icons/io'
+import { RiFileList3Line } from 'react-icons/ri'
 import { connect, useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 // import { fetchUsers } from "../redux/Products/userActions"
@@ -9,7 +13,7 @@ import { isAuthenticated } from '../redux/Products/userAuthActions'
 
 function LoginForm(props1) {
     const dispatch = useDispatch()
-    
+
     // {userData, fetchUsers}=props1
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -19,6 +23,8 @@ function LoginForm(props1) {
     const [errMsg, setErrMsg] = useState('')
     const [cart, setCart] = useState([])
     const [errMsg2, setErrMsg2] = useState('')
+    const [emailErr,setEmailErr]= useState('')
+    const [passErr,setPassErr]= useState('')
 
     useEffect(() => {
         // props1.fetchUsers()
@@ -42,20 +48,38 @@ function LoginForm(props1) {
 
 
     const individualuser = users.filter(user => ((user.email === entry.email) && (user.password === entry.password)))
-    console.log("Individualuser1:",individualuser[0]);
+    console.log("Individualuser1:", individualuser[0]);
 
-    individualuser.length?dispatch(isAuthenticated(true,individualuser[0])):dispatch(isAuthenticated(false,{}))
-    
-    
+    individualuser.length ? dispatch(isAuthenticated(true, individualuser[0])) : dispatch(isAuthenticated(false, {}))
+
+
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        setEntry({ email: email, password: password })    
+        if(email.length===true){
+            setEmailErr('**Email is required')
+        }
+        else if(!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
+            setEmailErr('**Enter a valid Email')
+        }else {
+            setEmailErr('')
+        }
+        if (password.length < 6) {
+            // alert(`Password should contain 6 characters.your password is only ${password.length} character long`)
+            setPassErr(`**Password should contain 6 characters`)
+            
+        } else {
+            // setEmailErr('')
+            setPassErr('')
+            setEntry({ email: email, password: password })
+        }
     }
 
-    return (
-        <div>
+    // console.log(passErr);
 
+    return (
+        <div className='loginbackcontainer'>
+            <Row>
             {/* <>
             <Container>
                 <Form className='logincls' onSubmit={handleSubmitForm}>
@@ -71,50 +95,79 @@ function LoginForm(props1) {
                 </Form>
             </Container>
             </> */}
+            <div >
+                <Container>
+                    <div className='logformcontainer'>
+                        <Row>
 
-                <>
-                    <Modal
-                        {...props1}
-                        size="lg"
-                        aria-labelledby="contained-modal-title-vcenter"
-                        centered
-                    >
-                        <Modal.Header closeButton>
-                            <Modal.Title id="contained-modal-title-vcenter">
-                                Please Sign In
-                            </Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <Form onSubmit={handleSubmitForm} >
-                                <Form.Label className='mb-3'>Email Address</Form.Label>
-                                <Form.Control className='mb-3' type="email" placeholder='Enter Email Address'
-                                    value={email} onChange={e => setEmail(e.target.value.toLowerCase())}></Form.Control>
+                            <Col sm={5}>
+                                <Row>
+                                    <Col sm={2}><GrLocation className='logformicon1' size={50} /></Col>
+                                    <Col sm>
+                                        <h6>MANAGE YOUR ORDERS</h6>
+                                        <p>
+                                            Track orders, manage cancellations & returns.
+                                        </p>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col sm={2}><RiFileList3Line className='logformicon2' size={50} /></Col>
+                                    <Col sm>
+                                        <h6>SHORTLIST ITEMS YOU LOVE</h6>
+                                        <p>
+                                            Keep items you love on a watchlist.
+                                        </p>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col sm={2}><IoIosNotificationsOutline className='logformicon3' size={50} /></Col>
+                                    <Col sm>
+                                        <h6>AWESOME OFFERS UPDATES FOR YOU</h6>
+                                        <p>
+                                            Be first to know about great offers and save.
+                                        </p>
+                                    </Col>
+                                </Row>
+                            </Col>
+                            <Col sm>
+                                <div className='loginform'>
+                                    <h4>Login On Snapdeal</h4>
+                                    {/* <Form onSubmit={handleSubmitForm} > */}
+                                    <Form onSubmit={handleSubmitForm}>
+                                        <Form.Label className='mb-2'>Email Address</Form.Label>
+                                        <Form.Control className='mb-1' type="email" placeholder='Enter Email Address'
+                                            value={email} onChange={e => setEmail(e.target.value.toLowerCase())}></Form.Control>
+                                        <div className='frminputerr'>{emailErr}</div>
 
-                                <Form.Label className='mb-3'>Password</Form.Label>
-                                <Form.Control className='mb-3' type="password" placeholder='Enter Password'
-                                    value={password} onChange={e => setPassword(e.target.value)}></Form.Control>
+                                        <Form.Label className='mb-2'>Password</Form.Label>
+                                        <Form.Control className='mb-1' type="password" placeholder='Enter Password'
+                                            value={password} onChange={e => setPassword(e.target.value)}></Form.Control>
+                                        <div className='frminputerr'>{passErr}</div>
+                                        <div className="d-grid gap-2">
+                                            <Button className='mb-3 mt-2' variant='danger' type='submit' >Sign In</Button>
+                                        </div>
 
-                                <Button className='mb-3' variant='danger' type='submit' onClick={props1.onHide}>Sign In</Button>
+                                    </Form>
+                                </div>
+                            </Col>
 
-                            </Form>
-                        </Modal.Body>
-
-                    </Modal>
-                    
-                </>
-
+                        </Row>
+                    </div>
+                </Container>
+            </div>
+            </Row>
             <div>
                 <Container>
-                {/* <Demo />  */}
-                {
-                    // userData && userData.users &&
-                    // userData.users.filter(user=>((user.email === email)&&(user.password === password)))
-                    individualuser.length ?  
-                     ( individualuser.map(user=>
-                         navigate(`/user/${user.id}/carts`, { replace: true }))
-                    ) : (<h1>Enter right credentials</h1>)
-                }
-                
+                    {/* <Demo />  */}
+                    {
+                        // userData && userData.users &&
+                        // userData.users.filter(user=>((user.email === email)&&(user.password === password)))
+                        individualuser.length ?
+                            (individualuser.map(user =>
+                                navigate(`/user/${user.id}/carts`, { replace: true }))
+                            ) : (<h1>Enter right credentials</h1>)
+                    }
+
                 </Container>
             </div>
 

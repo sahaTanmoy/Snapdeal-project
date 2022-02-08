@@ -6,7 +6,7 @@ function NavBar1() {
         <div className='fsize1'>
                 <Navbar bg="danger" variant="dark" >
                     <Container className='fsize1'>
-                        <Navbar.Brand className='fsize1'>Brand Waali Quality, Bazzar  Walli deal!</Navbar.Brand>
+                        <Navbar.Brand className='fsize1'>Brand Waali Quality, Bazaar  Walli deal!</Navbar.Brand>
                         <Nav >
                             <Nav.Link href="#">Impact@Snapdeal</Nav.Link>
                             <Nav.Link href="#">Gift Cards</Nav.Link>

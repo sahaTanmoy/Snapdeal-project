@@ -25,15 +25,16 @@ function UserCartContainer({cart,fetchUserCart}) {
         <div className='cart'>
             {status?(
             <Container>
+                <div className='cartbox'>
             <h1>Cart</h1>
             {
                 totalCart.length?
                 totalCart.map(cart=>
                 <div key={cart.id}>
-                    <div className='cartbox'>
-                    <br />
+                    {/* <div className='cartbox'> */}
+                    {/* <br />
                     <h5>User Id: {cart.userId}</h5>
-                    <h5>Cart Date:{cart.date.slice(0,10)} Time:{cart.date.slice(11,19)}</h5>
+                    <h5>Cart Date:{cart.date.slice(0,10)} Time:{cart.date.slice(11,19)}</h5> */}
                     {
                         cart.products.map(pro=>
                             <div key={pro.productId}>
@@ -45,12 +46,13 @@ function UserCartContainer({cart,fetchUserCart}) {
                             
                     }
                     
-                    <br />
-                    </div><br />
+                    {/* <br />
+                    </div><br /> */}
                 </div>
                 )
                 :<h1>The Cart is empty</h1>
             }
+            </div>
             
             <br /><br />
             <Footer />

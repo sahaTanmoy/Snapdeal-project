@@ -39,9 +39,9 @@ function CategoryProductContainer() {
 
     return loader ? (<div className='loader'><Spinner animation="border" /><h2>{category} Products are loading. Please wait..</h2></div>) : errMsg.length ? (<h2 className='errmsg'>{errMsg}</h2>) : (
         categoryProducts.length ? (
-            <div>
+            <div className='containerbody'>
 
-                <br /><br />
+                {/* <br /><br />
                 <Carousel variant='dark'>
                     {categoryProducts.map(product =>
                         <Carousel.Item className='carouselitem'>
@@ -52,7 +52,7 @@ function CategoryProductContainer() {
                             />
                         </Carousel.Item>
                     )}
-                </Carousel>
+                </Carousel> */}
                 <Container>
                     <br /><h2>Category: {category}</h2><br />
                     <Row>
@@ -60,8 +60,8 @@ function CategoryProductContainer() {
                         {categoryProducts.map(product =>
                             // <h1>{product.title}</h1>
                             // <div key={product.id}>
-                            <Col className='mb-5'>
-                                <Card style={{ width: '20rem' }} >
+                            <Col className='mb-4' sm={3}>
+                                {/* <Card style={{ width: '20rem' }} >
 
                                     <Card.Img variant="top" src={product.image} className='imgclass' />
                                     <Card.Body>
@@ -75,7 +75,26 @@ function CategoryProductContainer() {
                                         </Link>
                                     </Card.Body>
 
-                                </Card>
+                                </Card> */}
+                                <div className='productcard'>
+                                        <Link to={`/products/${product.id}`} className='deco1'>
+                                            <Row>
+                                                <div className='productcardimg'>
+                                                    <Image src={product.image} className='imgclass' />
+                                                </div>
+
+                                            </Row>
+                                            <Row>
+                                                <div className='productcardbody'>
+                                                    {product.title}<br />
+                                                    <b><FaRupeeSign /> {product.price}</b><br/>
+                                                    Rating: {product.rating.rate}<AiOutlineStar /> ({product.rating.count})<br/>
+                                                    Category: {product.category}
+                                                </div>
+                                            </Row>
+
+                                        </Link>
+                                    </div>
                             </Col>
                             // </div>
                         )}

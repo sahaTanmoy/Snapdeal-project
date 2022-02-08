@@ -16,7 +16,6 @@ function LogoutContainer() {
     const handleLogout =()=>{
         // alert('Are you sure to logout?')
         dispatch(isAuthenticated(false,{}));
-        alert('You have successfully Logged out');
         navigate("/", { replace: true })
     }
     
@@ -24,26 +23,9 @@ function LogoutContainer() {
         {status?( 
             <>
             
-            <Alert>
-                <Alert.Heading>
-                    Do you want to Sign Out?
-                </Alert.Heading>
-                <Button variant='danger' onClick={handleShow}>Sign Out</Button>
-                <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Sign Out Confirmation</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you sure to Sign Out?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button variant="danger" onClick={handleLogout}>
+            <Button variant="danger" onClick={handleLogout}>
             Sign Out
           </Button>
-        </Modal.Footer>
-      </Modal>
-            </Alert>
             
             </>       
         ):navigate("/login", { replace: true })

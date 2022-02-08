@@ -10,11 +10,12 @@
 .navSnap{
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 
 .imgclass{
-  max-height:20rem;
-  
+  max-height: 9rem;
+  max-width: 100%;
 }
 
 .fsize1{
@@ -38,9 +39,98 @@
   align-items: baseline;
 }
 
+.productcard{
+  border: 0.5px solid rgb(221, 221, 221);
+  border-radius: 5px;
+  padding: 15px;
+  height: 20rem;
+  /* box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%); */
+  background-color: white;
+}
+
+.productcard:hover{
+  /* border-color: rgb(75, 72, 72); */
+  box-shadow: 0.5rem 1rem 1.8rem rgba(46, 44, 44, 0.15);
+}
+.productcardimg{
+  height: 9rem;
+}
+
+.productcardbody{
+  font-size: 14px;
+}
+
 .ingcls{
   max-height:60%;
   max-width:60%;
+  
+}
+
+.ingcls2{
+  max-height:60%;
+  max-width:60%;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 3px;
+  margin: 0 15px;
+}
+
+.ingcls3{
+  max-height:10%;
+  max-width:10%;
+  border: 2px solid #e6e6e6;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0 15px;
+}
+
+
+.productoffers{
+  border: 1px dashed #dddddd;
+    border-radius: 3px;
+    margin: 0 20px;
+    padding: 5px 0px;
+}
+
+.iconback{
+  background-color: rgb(36, 137, 232);
+    padding: 5px;
+    border-radius: 3px;
+    margin: 0 5px;
+}
+
+.ratereviwcontainer{
+  padding: 25px;
+}
+
+.ratecolstyle{
+  padding: 10px 15px;
+  border: 1px solid rgb(226, 226, 226);
+  opacity: 0.8
+}
+
+.ratingreviw{
+  font-size: 50px;
+}
+
+.likebutton{
+  margin: 5px;
+}
+
+
+
+/* .img-wrapper{
+  overflow:hidden;
+  max-height:60%;
+  max-width:60%;
+}
+
+img.hover-zoom:hover {
+  transform: scale(1.25);
+} */
+
+.containerbody{
+  background: #f7f7f7;
 }
 
 .carouselitem{
@@ -50,7 +140,7 @@
 }
 
 .carouselimg{
-  max-height: 200px;
+  max-height: 280px;
   margin: auto; 
 } 
 
@@ -59,7 +149,7 @@
   height: 40px;
   list-style: none;
   display: flex;
-  justify-content: end;
+  justify-content: center;
 }
 
 .pgintnbtns a{
@@ -78,6 +168,128 @@
   color: whitesmoke;
   background-color: #dc3545;
 }
+.prevbtn{
+  display: none;
+}
+
+/* .downloadappbannerimage{
+  background-image: url('https://i2.sdlcdn.com/img/appScreenshot@1x.png');
+  display: inline-block;
+    vertical-align: middle;
+} */
+
+.downloadappbannercontainer{
+  background-color: white;
+}
+
+.downloadappbannerbtn{
+  height:40%;
+  width:40%;
+}
+
+.numberstyle{
+  display: none;
+}
+
+.productcontainer{
+  background-color: white;
+  border-radius: 5px;
+}
+
+.productimgcontainer{
+  border-right: 0.5px solid rgb(226, 226, 226);
+  padding-top: 50px;
+  
+}
+
+.productdescrpcontainer{
+  border-left: 0.5px solid rgb(226, 226, 226);
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 100px;
+  
+}
+
+.producttitlecontainer{
+  font-size: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.productothers{
+  background-color: #fbfbfb;
+}
+
+.mrpparapersonalise{
+  display: flex;
+  padding-left: 30px;
+  opacity: 0.5;
+}
+
+.productpricecontainer{
+  padding: 0px 25px 5px;
+  display: flex;
+  color: #ff2341;
+}
+
+.hrpersonalise{
+  width: 90%;
+  margin: auto;
+  opacity: 0.15;
+}
+
+.parapersonalise{
+  display: flex;
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.addcartbtn{
+  display:flex;
+  padding: 5px 25px;
+}
+
+.pinvalidate{
+  color: #dc3545;
+}
+
+.pincodecontainer{
+  z-index: 0;
+}
+
+.listflex{
+  display: flex;
+}
+
+.loginbackcontainer{
+  background-color: whitesmoke;
+}
+
+.logformcontainer{
+  padding: 20px;
+  padding-bottom: 10px;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 5px;
+  margin: 100px 200px;
+  background-image: url('https://i3.sdlcdn.com/img/snapdeal/sprite/userAuthSpritev3.png');
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+}
+
+.loginform{
+  padding-top: 30px;
+  padding-bottom: 100px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: white;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 5px;
+  margin-top: -60px; 
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-bottom: -50px;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+}
 
 .logincls{
   margin: 100px 300px;
@@ -86,8 +298,34 @@
   padding: 30px 30px;
 }
 
+.logformicon1{
+  color: yellow;
+}
+
+.logformicon2{
+  color: turquoise;
+}
+
+.logformicon3{
+  color: yellow;
+}
+
+.frminputerr{
+  color: red;
+  font-size: 14px;
+}
+
 .deco{
   text-decoration: none;
+}
+
+.deco1{
+  text-decoration: none;
+  color: #525459;
+}
+
+.deco1:hover{
+  color: black;
 }
 
 .deco2{
@@ -110,7 +348,7 @@
 }
 
 .productback{
-  background-color: azure;
+  background-color: #f7f7f7;
 }
 
 .profback{

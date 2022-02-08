@@ -27,15 +27,15 @@ function ReduxUserCart() {
         <div className='cart'>
             {status?(
             <Container>
-            <h1>Cart</h1>
+            <div className='cartbox'><h1>Cart</h1>
             {
                 totalCart2.length?
                 totalCart2.map(cart=>
                 <div key={cart.id}>
-                    <div className='cartbox'>
-                    <br />
+                    {/* <div className='cartbox'> */}
+                    {/* <br />
                     <h5>User Id: {cart.userId}</h5>
-                    <h5>Cart Date:{cart.date.slice(0,10)}</h5>
+                    <h5>Cart Date:{cart.date.slice(0,10)}</h5> */}
                     
                     {
                         cart.products.map(pro=>
@@ -50,13 +50,14 @@ function ReduxUserCart() {
                             
                     }
                     
-                    <br />
-                    </div><br />
+                    {/* <br />
+                    </div>
+                    <br /> */}
                 </div>
                 )
                 :<h1>The Cart is empty</h1>
             }
-            
+            </div>
             <br /><br />
             <Footer />
             </Container>):navigate("/login")}

@@ -16,6 +16,7 @@ import ProductContainer from './ProductContainer'
 import ProductDetailsContainer from './ProductDetailsContainer'
 import UserCartContainer from './UserCartContainer'
 import UserProfileContainer from './UserProfileContainer'
+import Demo from './Demo'
 
 function MainContainer() {
     return (
@@ -38,7 +39,9 @@ function MainContainer() {
                     <Route path="/" exact element={<ProductContainer />} />
                     <Route path="/products/:id" element={<ProductDetailsContainer />} />
                     <Route path="/category/:category" element={<CategoryProductContainer />} />
-                    <Route path="/login" element={<ModalLog />} />
+                    {/* <Route path="/login" element={<ModalLog />} /> */}
+                    <Route path="/login" element={<LoginForm />} />
+                    <Route path="/magnify" element={<Demo />} />
                     <Route path="/user/:userid/carts" element={<UserCartContainer />} />
                     <Route path="/user/:userid/profile" element={<UserProfileContainer />} />
                     <Route path="/logout" element={<LogoutContainer />} />
