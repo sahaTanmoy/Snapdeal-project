@@ -37,7 +37,7 @@ function ProductCategoryList({ ProductCategory, fetchProductCategory }) {
                     <AiOutlineMenu />
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                    <Dropdown.Item><b>Our Categories</b></Dropdown.Item>
+                    <Dropdown.Item><b>Categories</b></Dropdown.Item>
                     <Dropdown.Divider />
                     {loader ?(<Dropdown.Item>Loading..</Dropdown.Item>):(errMsg.length ?(<Dropdown.Item>{errMsg}</Dropdown.Item>):(
                         categories.map(Category =>

@@ -37,7 +37,7 @@ function CategoryProductContainer() {
     console.log(111111112, categoryProducts);
     console.log(111111113, errMsg);
 
-    return loader ? (<div className='loader'><Spinner animation="border" /><h2>{category} Products are loading. Please wait..</h2></div>) : errMsg.length ? (<h2 className='errmsg'>{errMsg}</h2>) : (
+    return loader ? (<div className='loader'><Spinner animation="border" variant="danger"/><h2>{category} Products are loading. Please wait..</h2></div>) : errMsg.length ? (<h2 className='errmsg'>{errMsg}</h2>) : (
         categoryProducts.length ? (
             <div className='containerbody'>
 
@@ -89,7 +89,7 @@ function CategoryProductContainer() {
                                                     {product.title}<br />
                                                     <b><FaRupeeSign /> {product.price}</b><br/>
                                                     Rating: {product.rating.rate}<AiOutlineStar /> ({product.rating.count})<br/>
-                                                    Category: {product.category}
+                                                    {/* Category: {product.category} */}
                                                 </div>
                                             </Row>
 

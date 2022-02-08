@@ -17,7 +17,7 @@ function LoginForm(props1) {
     // {userData, fetchUsers}=props1
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [entry, setEntry] = useState({})
+    const [entry, setEntry] = useState({email: '', password: ''})
     const navigate = useNavigate()
     const [users, setUsers] = useState([])
     const [errMsg, setErrMsg] = useState('')
@@ -46,32 +46,37 @@ function LoginForm(props1) {
             })
     }, [])
 
+    
+
 
     const individualuser = users.filter(user => ((user.email === entry.email) && (user.password === entry.password)))
     console.log("Individualuser1:", individualuser[0]);
 
     individualuser.length ? dispatch(isAuthenticated(true, individualuser[0])) : dispatch(isAuthenticated(false, {}))
 
-
+    console.log(212,entry);
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        if(email.length===true){
-            setEmailErr('**Email is required')
+        if(email.length===0 || (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/))){
+            setEmailErr('**Enter a valid Email');
+            setEntry({ ...entry,email: '' });
+            console.log(2121,"ok1");
         }
-        else if(!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
-            setEmailErr('**Enter a valid Email')
-        }else {
-            setEmailErr('')
+        else {
+            setEmailErr('');
+            
+            setEntry({ ...entry,email: email });
+            console.log(2121,"ok2");
         }
         if (password.length < 6) {
             // alert(`Password should contain 6 characters.your password is only ${password.length} character long`)
-            setPassErr(`**Password should contain 6 characters`)
-            
-        } else {
-            // setEmailErr('')
-            setPassErr('')
-            setEntry({ email: email, password: password })
+            setPassErr(`**Password should contain 6 characters`);
+            setEntry({ ...entry,password: '' })
+        } 
+        else {
+            setPassErr('');
+            setEntry({ ...entry,password: password })
         }
     }
 

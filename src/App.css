@@ -13,9 +13,18 @@
   z-index: 1;
 }
 
+.searchboxcontainer{
+  width: 75%;
+}
+
 .imgclass{
-  max-height: 9rem;
+  max-height: 10rem;
   max-width: 100%;
+}
+
+.imgclass2{
+  max-height: 10rem;
+  max-width: 20%;
 }
 
 .fsize1{
@@ -53,7 +62,7 @@
   box-shadow: 0.5rem 1rem 1.8rem rgba(46, 44, 44, 0.15);
 }
 .productcardimg{
-  height: 9rem;
+  height: 11rem;
 }
 
 .productcardbody{
@@ -180,11 +189,29 @@ img.hover-zoom:hover {
 
 .downloadappbannercontainer{
   background-color: white;
+  background-image: url('https://i2.sdlcdn.com/img/leaves1x.png');
+  background-position: right top;
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+}
+
+.downloadappbannertxt{
+  width: 60%;
+}
+
+.downloadappbannertxt1{
+  font-size: 40.4px;
+  font-family: sans-serif;
+  color: black;
 }
 
 .downloadappbannerbtn{
   height:40%;
   width:40%;
+}
+
+.downloadappbannerbtninnerdiv{
+  font-size: 8px;
 }
 
 .numberstyle{
@@ -229,7 +256,17 @@ img.hover-zoom:hover {
 .productpricecontainer{
   padding: 0px 25px 5px;
   display: flex;
+}
+
+.productmrprice{
   color: #ff2341;
+  font-size: 22px;
+}
+
+.productmrpoff{
+  border: 1px solid rgb(85, 85, 85);
+  opacity:0.5;
+  padding: 5px;
 }
 
 .hrpersonalise{
@@ -335,9 +372,9 @@ img.hover-zoom:hover {
 
 .loader{
   margin: 300px;
-  border: blue;
+  /* border: blue;
   border-style: dashed;
-  border-width: 0.5px;
+  border-width: 0.5px; */
 }
 
 .errmsg{
@@ -387,15 +424,45 @@ img.hover-zoom:hover {
   opacity: 0.8;
 }
 
-.cart{
+/* .cart{
   background-color: beige;
-}
+} */
 
 .cartbox{
-  background-color: antiquewhite;
+  background-color: white;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: 0.25rem;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    margin: 40px 0px;
+    opacity: 0.8;
+}
+
+.cartcaptioncontainer{
+  display: flex;
+    padding-left: 60px;
+    font-size: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.carttableheadcontainer{
+  background-color: #f7f7f7;
+}
+
+.cartitemimgcontainer{
+  width: 15%;
+}
+
+.cartitemtitlecontainer{
+  width: 20%;
+}
+
+.cartitempricecontainer{
+  width: 25%;
+}
+
+.cartitemqtycontainer{
+  width: 15%;
 }
 
 .cartitembox{

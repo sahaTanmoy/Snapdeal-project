@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
-import { Col, Container, Image, Row, Table, Button, ButtonGroup } from 'react-bootstrap'
+import React, { useEffect, useState } from 'react'
+import { Col, Container, Image, Row, Table, Button, ButtonGroup, Spinner } from 'react-bootstrap'
 import { FaRupeeSign } from 'react-icons/fa'
+import { AiOutlineClose } from 'react-icons/ai'
 import { connect, useSelector } from 'react-redux'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { fetchCartProductDetails, removeSelectedCartProduct } from '../redux/Products/cartProductDetailsActions'
@@ -13,6 +14,7 @@ import { fetchCartProductDetails, removeSelectedCartProduct } from '../redux/Pro
 function CartProductContainer(props) {
     
     console.log(999999999, props);
+    // const [total,setTotal] = useState(0)
 
     // const user = useSelector(state => state.AuthStatus.AuthUser)
     // const cart = useSelector(state => state.cart.cart)
@@ -100,11 +102,11 @@ function CartProductContainer(props) {
 
     return <div>
 
-        {props.individualCartProduct.loading?(<h3>Loading..</h3>):(
+        {props.individualCartProduct.loading?(<Spinner animation="border" variant="danger" />):(
         props.individualCartProduct.cartproduct.filter(cartproduct => (props.id === cartproduct.id)).map(cartproduct =>
             <div key={cartproduct.id}>
                 
-                <Row className='cartitembox'>
+                {/* <Row className='cartitembox'>
                     <Col sm={4} className='cartimgbox'>
                         <Image src={cartproduct.image} className="imgclass" alt={cartproduct.title} />
                     </Col>
@@ -128,10 +130,36 @@ function CartProductContainer(props) {
                         </Row>
                         <Button variant="danger" onClick={() => handleRemove(cartproduct.id)}>Remove item</Button>
                     </Col>
-                </Row>
+                </Row> */}
+
+                <>
+                <Table>
+                    <tbody>
+                        <tr>
+                            <td className='cartitemimgcontainer'><Image src={cartproduct.image} className="imgclass2" alt={cartproduct.title} /></td>
+                            <td className='cartitemtitlecontainer'> 
+                                <tr>{cartproduct.title}</tr>
+                                <tr><Button variant="light" onClick={() => handleRemove(cartproduct.id)}><AiOutlineClose /> Remove</Button></tr>
+                            </td>
+                            <td className='cartitempricecontainer'><FaRupeeSign />{cartproduct.price}</td>
+                            <td className='cartitemqtycontainer'>
+                            <ButtonGroup >
+                                    <Button variant="light" onClick={() => handleDecrease(cartproduct.id)}>-</Button>
+                                    <Button variant="light" disabled>{props.quantity}</Button>
+                                    <Button variant="light" onClick={() => handleIncrease(cartproduct.id)}>+</Button>
+                                </ButtonGroup>
+                            </td>
+                            <td><FaRupeeSign />{cartproduct.price * props.quantity}</td>
+                            
+                        </tr>
+                    </tbody>
+                </Table>
+                </>
                 
             </div>
+            
         ))}
+        
     </div>;
 }
 

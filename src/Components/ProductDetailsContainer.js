@@ -35,9 +35,9 @@ function ProductDetailsContainer() {
     const [errMsg, setErrMsg] = useState('')
     const [loader, setLoader] = useState(true)
     const [pin, setPin] = useState()
-    const [deliveryMessage1,setDeliveryMessage1]=useState('')
-    const [deliveryMessage2,setDeliveryMessage2]=useState('')
-    const [deliveryMessage3,setDeliveryMessage3]=useState('')
+    const [deliveryMessage1, setDeliveryMessage1] = useState('')
+    const [deliveryMessage2, setDeliveryMessage2] = useState('')
+    const [deliveryMessage3, setDeliveryMessage3] = useState('')
 
     useEffect(() => {
         axios.get(`https://fakestoreapi.com/products/${id}`)
@@ -60,17 +60,16 @@ function ProductDetailsContainer() {
     // if(status===true){setPin(user.address?.zipcode)}
     // console.log(451,status,pin);
 
-    const handlePin=()=>{
-        if(pin.length===0){
+    const handlePin = () => {
+        if (pin.length === 0) {
             setDeliveryMessage1('')
             setDeliveryMessage2("Generally Delivery in 6-7 days.")
             setDeliveryMessage3('')
-    }
-        else if(pin.length<6){
+        } else if (pin.length < 6 || isNaN(pin) === true) {
             setDeliveryMessage1("**Please Enter a valid Pin Code")
             setDeliveryMessage2("Generally Delivery in 6-7 days.")
             setDeliveryMessage3('')
-        }else{
+        } else {
             setDeliveryMessage1("Free Delivery Available")
             setDeliveryMessage2("Delivery in 4-5 days.")
             setDeliveryMessage3("Cash on Delivery also available for this location.")
@@ -121,7 +120,7 @@ function ProductDetailsContainer() {
     }
 
     return loader ?
-        (<div className='loader'><Spinner animation="border" /><h2>The product is loading. Please wait..</h2></div>) : (errMsg.length ? (<h2 className='errmsg'>{errMsg}</h2>) : (particularProduct ? (
+        (<div className='loader'><Spinner animation="border" variant="danger"/><h2>The product is loading. Please wait..</h2></div>) : (errMsg.length ? (<h2 className='errmsg'>{errMsg}</h2>) : (particularProduct ? (
             <div className='productback'>
                 <Container>
                     <br />
@@ -187,7 +186,7 @@ function ProductDetailsContainer() {
                                 <Col sm={7}>
 
                                     <p className='mrpparapersonalise'>MRP (Inclusive of all taxes)</p>
-                                    <h3 className='productpricecontainer'><FaRupeeSign /> {particularProduct.price}</h3>
+                                    <p className='productpricecontainer'><div className='productmrprice'><FaRupeeSign /> {particularProduct.price}</div> <div className='mx-3 productmrpoff'> {Math.floor((Math.random() * 80) + 10)}% off</div></p> 
                                 </Col>
                                 <Col sm>
                                     <p>Offers | Applicable on cart<br /><div className='productoffers'><MdOutlineLocalOffer className='iconback' size={25} />No offers</div></p>
@@ -200,42 +199,52 @@ function ProductDetailsContainer() {
                                 <p className='parapersonalise'> Color  <br />
                                     <Image src={particularProduct.image} className='ingcls3' alt={particularProduct.title} />
                                 </p>
-
+                                <div>
                                 {status ? (
 
-                                    <div><Button variant='danger' onClick={handleAddCart} className='addcartbtn'>ADD TO CART</Button><br /></div>
+                                    <div className='pb-5'>
+                                        <Button variant='dark' onClick={handleAddCart} className='addcartbtn mx-2'>ADD TO CART</Button>
+                                        <Button variant='danger' className='mx-2'>BUY NOW</Button><br />
+                                    </div>
 
-                                ) : (<div><Button variant='danger' onClick={handleAddCartNotlogged} className='addcartbtn'>ADD TO CART</Button><br /></div>)
-                                }
-
-                                <p className='parapersonalise'> Delivery  
+                                ) : (
+                                <div className='pb-5'>
+                                    <Button variant='dark' onClick={handleAddCartNotlogged} className='addcartbtn mx-2'>ADD TO CART</Button>
+                                    <Button variant='danger' className='mx-2'>BUY NOW</Button><br />
+                                    </div>
+                                    )}
                                 
-                                {/* {status?setPin(user.address&&user.address.zipcode):null} */}
 
-                                <span><InputGroup className="ms-3 pincodecontainer">
-                                    <FormControl
-                                        placeholder="Enter PinCode"
-                                        aria-label="Enter PinCode"
-                                        aria-describedby="basic-addon2"
-                                        value={pin} onChange={e => setPin(e.target.value)}
-                                        variant='outline-danger'
-                                    />
-                                    <Button variant="dark" id="button-addon2" onClick={handlePin}>
-                                        Check
-                                    </Button>
-                                    
-                                </InputGroup></span>
-                                <br />
-                                <div className='ms-4 pinvalidate'>{deliveryMessage1}</div>
+                                </div>
+
+                                <p className='parapersonalise'> Delivery
+
+                                    {/* {status?setPin(user.address&&user.address.zipcode):null} */}
+
+                                    <span><InputGroup className="ms-3 pincodecontainer">
+                                        <FormControl
+                                            placeholder="Enter PinCode"
+                                            aria-label="Enter PinCode"
+                                            aria-describedby="basic-addon2"
+                                            value={pin} onChange={e => setPin(e.target.value)}
+                                            variant='outline-danger'
+                                        />
+                                        <Button variant="dark" id="button-addon2" onClick={handlePin}>
+                                            Check
+                                        </Button>
+
+                                    </InputGroup></span>
+                                    <br />
+                                    <div className='ms-4 pinvalidate'>{deliveryMessage1}</div>
                                 </p>
 
                                 <ul>
-                                    {deliveryMessage2.length?<li>
+                                    {deliveryMessage2.length ? <li>
                                         {deliveryMessage2}
-                                    </li>:null}
-                                    {deliveryMessage3.length?<li>
+                                    </li> : null}
+                                    {deliveryMessage3.length ? <li>
                                         {deliveryMessage3}
-                                    </li>:null}
+                                    </li> : null}
                                 </ul><br />
                             </div><br />
                             <div className='parapersonalise'><VscWorkspaceTrusted size={21} />. 7 Days Easy Returns</div>
@@ -276,7 +285,7 @@ function ProductDetailsContainer() {
 
 
                                         </Col>
-                                        <Col sm className='ratecolstyle'><p><div className='ratingreviw'>{(particularProduct.rating?.rate) / 5 * 100}%</div>
+                                        <Col sm className='ratecolstyle'><p><div className='ratingreviw'>{Math.ceil((particularProduct.rating?.rate) / 5 * 100)}%</div>
                                             <br />Recomendations<br />
                                             Based on {particularProduct.rating?.count} Ratings</p>
                                         </Col>

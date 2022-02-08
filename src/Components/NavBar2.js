@@ -36,15 +36,16 @@ function NavBar2() {
                     <ProductCategoryList />
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse className="justify-content-end">
-                        <Nav className="justify-content-center alignbase">
+                        <Nav className="searchboxcontainer alignbase">
                     {/* <span> */}
 
                         <InputGroup>
-                            <FormControl placeholder='Search products & Brands '></FormControl>
+                            <FormControl placeholder='Search products & Brands ' aria-describedby="basic-addon2"></FormControl>
                             <Button variant="dark">Search</Button>
                         </InputGroup>
                         {/* </span> */}
                         </Nav>
+                        {/* <Nav></Nav> */}
                         <Nav className="alignbase">
                             {status &&
                                 <Nav.Link>

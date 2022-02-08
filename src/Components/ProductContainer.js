@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Button, Card, Col, Container, Row, Spinner, Carousel, CarouselItem, Image } from 'react-bootstrap'
 import { FaRupeeSign, FaGooglePlay } from 'react-icons/fa'
 import { AiOutlineStar, AiOutlineApple } from 'react-icons/ai';
-
+import {GrGooglePlay} from 'react-icons/gr'
 import { Link, Route, Routes } from 'react-router-dom'
 import axios from 'axios'
 import Footer from './Footer';
@@ -48,7 +48,7 @@ function ProductContainer() {
 
 
     return loader ? (
-        <div className='loader'><Spinner animation="border" /><h2>loading..</h2></div>
+        <div className='loader'><Spinner animation="border" variant="danger" /><h2>loading..</h2></div>
     ) : errMsg.length ? (
         <h2 className='errmsg'>{errMsg}</h2>
     ) : (products.length ? (
@@ -74,7 +74,7 @@ function ProductContainer() {
 
             </Carousel>
             <div className='containerbody'>
-                <br /><h2>Our Products</h2><br />
+                <br /><h2>Products</h2>
 
                 <Container>
 
@@ -118,7 +118,7 @@ function ProductContainer() {
                                                         {product.title}<br />
                                                         <b><FaRupeeSign /> {product.price}</b><br />
                                                         Rating: {product.rating.rate}<AiOutlineStar /> ({product.rating.count})<br />
-                                                        Category: {product.category}
+                                                        {/* Category: {product.category} */}
                                                     </div>
                                                 </Row>
 
@@ -129,7 +129,7 @@ function ProductContainer() {
                                 )
                         }
 
-                    </Row>
+                    </Row><br />
 
                     <ReactPaginate
                         previousLabel={"Previous"}
@@ -151,15 +151,18 @@ function ProductContainer() {
                             </div>
                         </Col>
                         <Col sm>
-                            <Row>
-                                <h1>Download Snapdeal App Now</h1>
+                            <Row className='pt-5 pb-5 downloadappbannertxt'>
+                                <div >
+                                <p className='downloadappbannertxt1'>Download Snapdeal App Now</p>
                                 <p>
                                     Fast, Simple & Delightful.<br />
                                     All it takes is 30 seconds to Download.
                                 </p>
-                                <div><Button variant="outline-dark" className='mx-2'>Get from<br /><AiOutlineApple /> App store</Button>
-                                    <Button variant="outline-dark" className='mx-2'>Get from<br /><FaGooglePlay /> Play Store</Button>
+                                <div className='pt-5 pb-5'><Button variant="dark" className='mx-2'><div className='downloadappbannerbtninnerdiv'>DOWNLOAD ON THE</div><AiOutlineApple /> App Store</Button>
+                                    <Button variant="dark" className='mx-2'><div className='downloadappbannerbtninnerdiv'>ANDROID APP ON</div>
+                                    <FaGooglePlay /> Play Store</Button>
                                 </div>{/* <Image src='https://www.freepnglogos.com/uploads/app-store-logo-png/apple-app-store-travel-awards-globestamp-7.png' className='downloadappbannerbtn'></Image> */}
+                                </div>
                             </Row>
                         </Col>
                     </Row>
