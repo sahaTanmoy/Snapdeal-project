@@ -23,10 +23,11 @@ function ProductContainer() {
     // console.log(121,pageVisited);
     const pageCount = Math.ceil(products.length / productsPerPage)
 
-    const handlePageChange = ({ selected }) => {
-        setPageNumber(selected)
-    }
-    // console.log(122,pageNumber);
+    // const handlePageChange = ({ selected }) => {
+    //     setPageNumber(selected)
+    // }
+    console.log(122,pageCount);
+    console.log(1222,pageNumber);
 
     useEffect(() => {
         axios.get(`https://fakestoreapi.com/products`)
@@ -131,7 +132,7 @@ function ProductContainer() {
 
                     </Row><br />
 
-                    <ReactPaginate
+                    {/* <ReactPaginate
                         previousLabel={"Previous"}
                         nextLabel={"Load More"}
                         pageCount={pageCount}
@@ -141,7 +142,8 @@ function ProductContainer() {
                         nextLinkClassName={'nextbtn'}
                         disabledClassName={'pgintndisabled'}
                         activeClassName={'pgintnactv'}
-                    />
+                    /> */}
+                    {pageNumber===(pageCount-1)?null:<Button onClick={()=>setPageNumber(pageNumber+1)} variant='dark' className='loadmorebtn mb-5 px-5'>Load More</Button>}
                 </Container>
                 <div className='downloadappbannercontainer'>
                     <Row>
@@ -160,7 +162,7 @@ function ProductContainer() {
                                 </p>
                                 <div className='pt-5 pb-5'><Button variant="dark" className='mx-2'><div className='downloadappbannerbtninnerdiv'>DOWNLOAD ON THE</div><AiOutlineApple /> App Store</Button>
                                     <Button variant="dark" className='mx-2'><div className='downloadappbannerbtninnerdiv'>ANDROID APP ON</div>
-                                    <FaGooglePlay /> Play Store</Button>
+                                    <FaGooglePlay /> Google Play</Button>
                                 </div>{/* <Image src='https://www.freepnglogos.com/uploads/app-store-logo-png/apple-app-store-travel-awards-globestamp-7.png' className='downloadappbannerbtn'></Image> */}
                                 </div>
                             </Row>
