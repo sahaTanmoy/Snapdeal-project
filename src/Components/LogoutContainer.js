@@ -28,7 +28,7 @@ function LogoutContainer() {
           </Button>
             
             </>       
-        ):navigate("/login", { replace: true })
+        ):navigate("/login")
         }           
     </div>;
 }

@@ -60,23 +60,27 @@ function LoginForm(props1) {
         e.preventDefault();
         if(email.length===0 || (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/))){
             setEmailErr('**Enter a valid Email');
-            setEntry({ ...entry,email: '' });
+            // setEntry({ ...entry,email: '' });
+            entry.email= '';
             console.log(2121,"ok1");
         }
         else {
             setEmailErr('');
             
-            setEntry({ ...entry,email: email });
+            // setEntry({ ...entry,email: email });
+            entry.email=email
             console.log(2121,"ok2");
         }
         if (password.length < 6) {
             // alert(`Password should contain 6 characters.your password is only ${password.length} character long`)
             setPassErr(`**Password should contain 6 characters`);
-            setEntry({ ...entry,password: '' })
+            // setEntry({ ...entry,password: '' })
+            entry.password=''
         } 
         else {
             setPassErr('');
-            setEntry({ ...entry,password: password })
+            // setEntry({ ...entry,password: password })
+            entry.password=password
         }
     }
 

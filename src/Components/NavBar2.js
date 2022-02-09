@@ -79,7 +79,7 @@ function NavBar2() {
 
                                         <Dropdown.Divider />
                                         {status &&
-                                            <Dropdown.Item><Link to='/logout'><BsPower />Sign out</Link></Dropdown.Item>}
+                                            <Dropdown.Item><Link to={`/logout`}><BsPower />Sign out</Link></Dropdown.Item>}
                                     </Dropdown.Menu>
                                 </Dropdown>):(<Link to={`/login`} className='deco'><Button variant='danger'>Sign In <CgProfile size={20} /> </Button> </Link>)}
 
