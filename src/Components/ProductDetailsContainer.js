@@ -35,6 +35,7 @@ function ProductDetailsContainer() {
     const [errMsg, setErrMsg] = useState('')
     const [loader, setLoader] = useState(true)
     const [pin, setPin] = useState()
+    const [deliveryMessage0, setDeliveryMessage0] = useState('')
     const [deliveryMessage1, setDeliveryMessage1] = useState('')
     const [deliveryMessage2, setDeliveryMessage2] = useState('')
     const [deliveryMessage3, setDeliveryMessage3] = useState('')
@@ -55,21 +56,24 @@ function ProductDetailsContainer() {
                 )
 
             })
-    }, [])
+    }, [id])
 
     // if(status===true){setPin(user.address?.zipcode)}
     // console.log(451,status,pin);
 
     const handlePin = () => {
         if (pin.length === 0) {
-            setDeliveryMessage1('')
-            setDeliveryMessage2("Generally Delivery in 6-7 days.")
+            setDeliveryMessage0('')
+            setDeliveryMessage1("Generally Delivery in 6-7 days.")
+            setDeliveryMessage2('')
             setDeliveryMessage3('')
         } else if (pin.length < 6 || isNaN(pin) === true) {
-            setDeliveryMessage1("**Please Enter a valid Pin Code")
-            setDeliveryMessage2("Generally Delivery in 6-7 days.")
+            setDeliveryMessage0("**Please Enter a valid Pin Code")
+            setDeliveryMessage1("Generally Delivery in 6-7 days.")
+            setDeliveryMessage2('')
             setDeliveryMessage3('')
         } else {
+            setDeliveryMessage0('')
             setDeliveryMessage1("Free Delivery Available")
             setDeliveryMessage2("Delivery in 4-5 days.")
             setDeliveryMessage3("Cash on Delivery also available for this location.")
@@ -116,7 +120,7 @@ function ProductDetailsContainer() {
                     products: [{ "productId": particularProduct.id, "quantity": 1 }]
                 }))
 
-        navigate(`/user/${user.id}/usercart`)
+        navigate(`/AddedToCart/${particularProduct.id}`)
     }
 
     return loader ?
@@ -235,8 +239,9 @@ function ProductDetailsContainer() {
 
                                     </InputGroup></span>
                                     <br />
-                                    <div className='ms-4 pinvalidate'>{deliveryMessage1}</div>
+                                    <div className='ms-4'>{deliveryMessage1}</div>
                                 </p>
+                                    <div className='pinvalidate'>{deliveryMessage0}</div>
 
                                 <ul>
                                     {deliveryMessage2.length ? <li>

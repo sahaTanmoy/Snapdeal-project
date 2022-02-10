@@ -13,8 +13,16 @@
   z-index: 1;
 }
 
-.searchboxcontainer{
+.searchboxcontainer1{
   width: 75%;
+}
+
+.searchboxcontainer2{
+  width: 100%;
+}
+
+.selectcls{
+  width: 80%;
 }
 
 .imgclass{
@@ -26,6 +34,12 @@
   max-height: 10rem;
   max-width: 20%;
 }
+
+.imgclass3{
+  max-height: 9rem;
+  max-width: 100%;
+}
+
 
 .fsize1{
   line-height: 5px;
@@ -147,10 +161,14 @@ img.hover-zoom:hover {
   background: #f7f7f7;
 }
 
+.carousel{
+  z-index: 0;
+}
+
 .carouselitem{
   justify-content: center;
   padding: 35px 0px;
-  z-index: -1;
+  /* z-index: -1; */
 }
 
 .carouselimg{
@@ -255,7 +273,8 @@ img.hover-zoom:hover {
 .mrpparapersonalise{
   display: flex;
   padding-left: 30px;
-  opacity: 0.5;
+  /* opacity: 0.5; */
+  color: rgb(169, 169, 169);
 }
 
 .productpricecontainer{
@@ -270,14 +289,16 @@ img.hover-zoom:hover {
 
 .productmrpoff{
   border: 1px solid rgb(85, 85, 85);
-  opacity:0.5;
+  /* opacity:0.5; */
+  color: rgb(169, 169, 169);
   padding: 5px;
 }
 
 .hrpersonalise{
   width: 90%;
   margin: auto;
-  opacity: 0.15;
+  opacity: 1;
+  color: rgb(221, 221, 221);
 }
 
 .parapersonalise{
@@ -375,6 +396,16 @@ img.hover-zoom:hover {
   color: white;
 }
 
+.deco3{
+  text-decoration: none;
+  color: white;
+}
+
+.deco3:hover{
+  color: white;
+}
+
+
 .loader{
   margin: 200px 0px;
   /* border: blue;
@@ -433,6 +464,27 @@ img.hover-zoom:hover {
   background-color: beige;
 } */
 
+.addedcartback{
+  background: #f7f7f7;
+}
+
+.addedcartcontainer1{
+  margin: 30px 0px 50px 0px;
+  background-color: white;
+}
+
+.addedcartcontainer2{
+  padding: 30px 0px 40px 0px;
+}
+
+.addedcartproductcontainer{
+  border-right: 2px solid rgb(209, 209, 209);
+}
+
+.addedcartproductdisp{
+  display: flex;
+}
+
 .cartbox{
   background-color: white;
     border: 1px solid rgba(0,0,0,.125);
@@ -463,11 +515,17 @@ img.hover-zoom:hover {
 }
 
 .cartitempricecontainer{
-  width: 25%;
+  width: 20%;
 }
 
 .cartitemqtycontainer{
-  width: 15%;
+  width: 25%;
+}
+
+.decreasemsg{
+  color: red;
+  font-size: 13px;
+  padding-right: 20px;
 }
 
 .cartitembox{

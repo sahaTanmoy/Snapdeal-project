@@ -21,12 +21,17 @@ function CartProductContainer(props) {
 
     const user = props.user
     const cart = props.cart
+    console.log(9897,props.individualCartProduct);
 
     const navigate = useNavigate()
 
     var currentdate = new Date();
     var currdate = currentdate.getFullYear() + "-" + (currentdate.getMonth() + 1)
         + "-" + currentdate.getDate()
+
+    const [decreaseMsg,setDecreaseMsg]=useState('')
+
+    var length
 
     
     useEffect(() => {
@@ -36,7 +41,7 @@ function CartProductContainer(props) {
             console.log(5555555555555, "cleanup");
             props.removeSelectedCartProduct()
         }
-    }, []);
+    }, [props.id]);
     const handleDecrease = (id) => {
         // cart.length?(cart.findIndex(cart=>cart.date===currdate)===-1?null:
         (cart.map(cart => 
@@ -46,7 +51,7 @@ function CartProductContainer(props) {
                 (cart.products.findIndex(pro => (pro.productId === id)) === -1 ?
                     null :
                     (cart.products.map(pro => (pro.productId === id) ?
-                        pro.quantity != 1 ? (pro.quantity = pro.quantity - 1) : alert(`Item has Quantity ${pro.quantity}. Cannot Decrease Quantity. Try to remove Item`) :
+                        pro.quantity != 1 ? (pro.quantity = pro.quantity - 1) : setDecreaseMsg(`Item has Quantity ${pro.quantity}. Cannot Decrease Quantity. Try to remove Item`) :
                         null)
                         // (cart.products.splice(cart.products.findIndex(pro=>(pro.productId===id),1))
                     )
@@ -57,7 +62,7 @@ function CartProductContainer(props) {
                 ))
         // ):null
         // alert(`Id: ${id}, Qty: ${qty}`)
-        navigate(`/user/${user.id}/usercart`)
+        navigate(`/`)
     }
 
     const handleIncrease = (id) => {
@@ -67,7 +72,7 @@ function CartProductContainer(props) {
             (cart.products.length ?
                 // (cart.products.findIndex(pro => (pro.productId === id)) === -1 ?
                 //     null :
-                    (cart.products.map(pro => (pro.productId === id) ? (pro.quantity = pro.quantity + 1) 
+                    (cart.products.map(pro => (pro.productId === id) ? ((pro.quantity = pro.quantity + 1),setDecreaseMsg('')) 
                     :null)
                         // (cart.products.splice(cart.products.findIndex(pro=>(pro.productId===id),1))
                     // )
@@ -78,7 +83,7 @@ function CartProductContainer(props) {
                 ))
         // :null
         // alert(`Id: ${id}, Qty: ${qty}`)
-        navigate(`/user/${user.id}/usercart`)
+        navigate(`/`)
     }
 
     const handleRemove = (id) => {
@@ -97,7 +102,7 @@ function CartProductContainer(props) {
                 ))
         // ):null
         // alert(`Id: ${id}, Qty: ${qty}`)
-        navigate(`/user/${user.id}/usercart`)
+        navigate(`/`)
     }
 
     return <div>
@@ -105,32 +110,6 @@ function CartProductContainer(props) {
         {props.individualCartProduct.loading?(<Spinner animation="border" variant="danger" />):(
         props.individualCartProduct.cartproduct.filter(cartproduct => (props.id === cartproduct.id)).map(cartproduct =>
             <div key={cartproduct.id}>
-                
-                {/* <Row className='cartitembox'>
-                    <Col sm={4} className='cartimgbox'>
-                        <Image src={cartproduct.image} className="imgclass" alt={cartproduct.title} />
-                    </Col>
-                    <Col sm>
-                        <Row>
-                            <h1>{cartproduct.title}</h1>
-                        </Row>
-                        <Row>
-                            <Col sm>Price: <FaRupeeSign />{cartproduct.price} per item</Col>
-                            <Col sm>
-                                <ButtonGroup >
-                                    <Button variant="outline-danger" onClick={() => handleDecrease(cartproduct.id)}>-</Button>
-                                    <Button variant="outline-danger" disabled>{props.quantity}</Button>
-                                    <Button variant="outline-danger" onClick={() => handleIncrease(cartproduct.id)}>+</Button>
-                                </ButtonGroup>
-
-                            </Col>
-                        </Row>
-                        <Row>
-                            <h3>Total Price: <FaRupeeSign />{cartproduct.price * props.quantity}</h3>
-                        </Row>
-                        <Button variant="danger" onClick={() => handleRemove(cartproduct.id)}>Remove item</Button>
-                    </Col>
-                </Row> */}
 
                 <>
                 <Table>
@@ -148,8 +127,10 @@ function CartProductContainer(props) {
                                     <Button variant="light" disabled>{props.quantity}</Button>
                                     <Button variant="light" onClick={() => handleIncrease(cartproduct.id)}>+</Button>
                                 </ButtonGroup>
+                                <div className='decreasemsg'>{decreaseMsg}</div>
                             </td>
                             <td><FaRupeeSign />{cartproduct.price * props.quantity}</td>
+                            {/* {length+cartproduct.price * props.quantity} */}
                             
                         </tr>
                     </tbody>

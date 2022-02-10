@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Container, Spinner, Table } from 'react-bootstrap'
+import { Button, Container, Spinner, Table, Modal } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -9,26 +9,47 @@ import { useSelector } from 'react-redux'
 import CartProductContainer from './CartProductContainer'
 import Footer from './Footer'
 
-function ReduxUserCart() {
-    const { userid } = useParams()
+function ReduxUserCart(props) {
+    // const { userid } = useParams()
+    const {userid} = props
     const status = useSelector(state => state.AuthStatus.AuthStatus)
-    const cart = useSelector(state => state.cart)
+    const cart = useSelector(state => state.cart.cart)
     const navigate = useNavigate()
 
-    const totalCart = cart && cart.cart
+    const len = cart.length ? (cart.map(cart => cart.products.length)) : []
+    console.log(15, len);
+    const totallen = len.reduce((acc = 0, curr) => {
+        acc = acc + curr
+        return acc
+    },0)
+    console.log(226, totallen);
+
+    const totalCart = cart 
 
     const totalCart2 = totalCart.filter(cart => (cart.userId === parseInt(userid)))
     console.log(parseInt(userid));
     console.log(totalCart);
     console.log(totalCart2);
 
-    return cart.loading ? (<div className='loader'><Spinner animation="border" /><h2>Loading..</h2></div>) : (cart.error ? (<h2 className='errmsg'>{cart.error}</h2>) : (
+    return ((
 
         <div className='cart'>
             {status ? (
                 <Container>
-                    <div className='cartbox'>
-                        <div className='cartcaptioncontainer' >Shopping Cart</div>
+                    
+                    <Modal
+                        {...props}
+                        size="lg"
+                        aria-labelledby="contained-modal-title-lg"
+                        centered
+                    >
+                        <Modal.Header closeButton>
+                            <Modal.Title id="contained-modal-title-lg">
+                            Shopping Cart
+                            ({totallen} {totallen>1?"items":"item"})
+                            </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
                         <>
                             <Table>
                                 <thead className='carttableheadcontainer'>
@@ -47,15 +68,11 @@ function ReduxUserCart() {
                             totalCart2.length ?
                                 totalCart2.map(cart =>
                                     <div key={cart.id}>
-                                        {/* <div className='cartbox'> */}
-                                        {/* <br />
-                    <h5>User Id: {cart.userId}</h5>
-                    <h5>Cart Date:{cart.date.slice(0,10)}</h5> */}
 
                                         {
                                             cart.products.map(pro =>
                                                 <div key={pro.productId}>
-                                                    {/* <hr /> */}
+                                                    
 
                                                     <CartProductContainer id={pro.productId} quantity={pro.quantity} />
 
@@ -65,19 +82,20 @@ function ReduxUserCart() {
 
                                         }
 
-                                        {/* <br />
-                    </div>
-                    <br /> */}
+                                        
                                     </div>
                                 )
                                 : <h1>The Cart is empty</h1>
                         }
-                    </div>
-                    <br /><br />
-                    <Footer />
-                </Container>) : navigate("/login")}
+                        </Modal.Body>
+                        
+                    </Modal>
+                    
+                </Container>
+                ) : navigate("/login")}
         </div>
-    ))
+    )
+    )
 }
 
 export default (ReduxUserCart)

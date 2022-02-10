@@ -32,17 +32,17 @@ function ProductCategoryList({ ProductCategory, fetchProductCategory }) {
     
     return (
         <div>
-            <Dropdown>
+            <Dropdown align="end">
                 <Dropdown.Toggle variant='danger'>
                     <AiOutlineMenu />
                 </Dropdown.Toggle>
-                <Dropdown.Menu>
-                    <Dropdown.Item><b>Categories</b></Dropdown.Item>
+                <Dropdown.Menu >
+                    <Dropdown.Item> TOP CATEGORIES </Dropdown.Item>
                     <Dropdown.Divider />
                     {loader ?(<Dropdown.Item>Loading..</Dropdown.Item>):(errMsg.length ?(<Dropdown.Item>{errMsg}</Dropdown.Item>):(
                         categories.map(Category =>
                             <div key={Category}>
-                            <Dropdown.Item>
+                            <Dropdown.Item  className='px-5'>
                                 <Link to={`/category/${Category}`} className='deco'>
                                 {Category}
                                 </Link>

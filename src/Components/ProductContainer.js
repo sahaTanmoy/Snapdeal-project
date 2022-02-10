@@ -55,7 +55,7 @@ function ProductContainer() {
     ) : (products.length ? (
         <div>
             <br />
-            <Carousel variant='dark'>
+            <Carousel variant='dark' className='carousel'>
 
                 <Carousel.Item className='carouselitem'>
                     <Image

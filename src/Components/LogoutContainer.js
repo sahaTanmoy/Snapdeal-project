@@ -23,8 +23,8 @@ function LogoutContainer() {
         {status?( 
             <>
             
-            <Button variant="danger" onClick={handleLogout}>
-            Sign Out
+            <Button variant="secondary" onClick={handleLogout} className='px-5'>
+            LOGOUT
           </Button>
             
             </>       

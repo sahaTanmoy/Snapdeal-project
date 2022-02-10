@@ -9,6 +9,7 @@ import { connect, useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 // import { fetchUsers } from "../redux/Products/userActions"
 import { isAuthenticated } from '../redux/Products/userAuthActions'
+import { fetchUserCart } from '../redux/Products/userCartActions'
 // import Demo from './Demo'
 
 function LoginForm(props1) {
@@ -46,13 +47,23 @@ function LoginForm(props1) {
             })
     }, [])
 
+    // useEffect(() => {
+    //     dispatch(fetchUserCart(userid))
+    // }, [])
+
     
 
 
     const individualuser = users.filter(user => ((user.email === entry.email) && (user.password === entry.password)))
     console.log("Individualuser1:", individualuser[0]);
 
-    individualuser.length ? dispatch(isAuthenticated(true, individualuser[0])) : dispatch(isAuthenticated(false, {}))
+    // useEffect(() => {
+    //     dispatch(fetchUserCart(individualuser[0].id))
+    // }, [])
+
+
+    individualuser.length ? (dispatch(isAuthenticated(true, individualuser[0]))) : dispatch(isAuthenticated(false, {}))
+    individualuser.length ? (dispatch(fetchUserCart(individualuser[0].id))) : dispatch(isAuthenticated(false, {}))
 
     console.log(212,entry);
 
@@ -173,7 +184,8 @@ function LoginForm(props1) {
                         // userData.users.filter(user=>((user.email === email)&&(user.password === password)))
                         individualuser.length ?
                             (individualuser.map(user =>
-                                navigate(`/user/${user.id}/carts`, { replace: true }))
+                                // navigate(`/user/${user.id}/carts`, { replace: true }))
+                                navigate(`/`, { replace: true }))
                             ) : (<h1>Enter right credentials</h1>)
                     }
 
