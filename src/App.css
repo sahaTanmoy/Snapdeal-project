@@ -514,6 +514,10 @@ img.hover-zoom:hover {
   width: 20%;
 }
 
+.tablermvbtn{
+  display: flex;
+}
+
 .cartitempricecontainer{
   width: 20%;
 }

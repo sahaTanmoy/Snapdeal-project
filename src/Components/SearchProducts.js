@@ -17,7 +17,7 @@ function SearchProducts() {
     console.log(122211,searchEntry);
 
     const [selectedOption, setSelectedOption] = useState(0)
-    // const [clearable, setClearable] = useState(true)
+    const [clearable, setClearable] = useState(true)
 
     useEffect(() => {
         axios.get(`https://fakestoreapi.com/products`)
@@ -69,6 +69,7 @@ function SearchProducts() {
         onChange={setSelectedOption}
         options={options}
         className='selectcls'
+        clearable={true}
         placeholder='Search products & Brands '
       />
       {selectedOption.value!=null?(<Link to={`/products/${selectedOption.value}`} className='deco1'>

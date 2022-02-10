@@ -112,13 +112,13 @@ function CartProductContainer(props) {
             <div key={cartproduct.id}>
 
                 <>
-                <Table>
+                <Table responsive>
                     <tbody>
                         <tr>
                             <td className='cartitemimgcontainer'><Image src={cartproduct.image} className="imgclass2" alt={cartproduct.title} /></td>
                             <td className='cartitemtitlecontainer'> 
                                 <tr>{cartproduct.title}</tr>
-                                <tr><Button variant="light" onClick={() => handleRemove(cartproduct.id)}><AiOutlineClose /> Remove</Button></tr>
+                                <tr><Button variant="light" onClick={() => handleRemove(cartproduct.id)} ><div className='tablermvbtn'><AiOutlineClose size={23} /> Remove</div></Button></tr>
                             </td>
                             <td className='cartitempricecontainer'><FaRupeeSign />{cartproduct.price}</td>
                             <td className='cartitemqtycontainer'>
