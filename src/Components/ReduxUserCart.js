@@ -54,12 +54,11 @@ function ReduxUserCart(props) {
                             <Table>
                                 <thead className='carttableheadcontainer'>
                                     <tr>
-                                        <td>Item Details                 </td>
-                                        <td>            </td>
-                                        <td></td>
-                                        <td>Price</td>
-                                        <td>Quantity</td>
-                                        <td>Subtotal</td>
+                                        <td colSpan={3} className='cartitemdetailcontainer'>Item Details        </td>
+                                        
+                                        <td className='cartitempricecontainer'>Price</td>
+                                        <td className='cartitemqtycontainer'>Quantity</td>
+                                        <td className='cartitempricecontainer'>Subtotal</td>
                                     </tr>
                                 </thead>
                             </Table>

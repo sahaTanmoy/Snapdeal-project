@@ -32,7 +32,7 @@
 
 .imgclass2{
   max-height: 10rem;
-  max-width: 20%;
+  max-width: 60%;
 }
 
 .imgclass3{
@@ -506,12 +506,20 @@ img.hover-zoom:hover {
   background-color: #f7f7f7;
 }
 
+.cartitemdetailcontainer{
+  width: 35%;
+}
+
 .cartitemimgcontainer{
   width: 15%;
 }
 
 .cartitemtitlecontainer{
-  width: 20%;
+  width: 12%;
+}
+
+.cartitemdescrip{
+  font-size: 14px;
 }
 
 .tablermvbtn{

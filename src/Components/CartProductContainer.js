@@ -12,7 +12,7 @@ import { fetchCartProductDetails, removeSelectedCartProduct } from '../redux/Pro
 
 
 function CartProductContainer(props) {
-    
+
     console.log(999999999, props);
     // const [total,setTotal] = useState(0)
 
@@ -21,7 +21,7 @@ function CartProductContainer(props) {
 
     const user = props.user
     const cart = props.cart
-    console.log(9897,props.individualCartProduct);
+    console.log(9897, props.individualCartProduct);
 
     const navigate = useNavigate()
 
@@ -29,13 +29,13 @@ function CartProductContainer(props) {
     var currdate = currentdate.getFullYear() + "-" + (currentdate.getMonth() + 1)
         + "-" + currentdate.getDate()
 
-    const [decreaseMsg,setDecreaseMsg]=useState('')
+    const [decreaseMsg, setDecreaseMsg] = useState('')
 
     var length
 
-    
+
     useEffect(() => {
-        
+
         props.fetchCartProductDetails(props.id)
         return () => {
             console.log(5555555555555, "cleanup");
@@ -44,22 +44,22 @@ function CartProductContainer(props) {
     }, [props.id]);
     const handleDecrease = (id) => {
         // cart.length?(cart.findIndex(cart=>cart.date===currdate)===-1?null:
-        (cart.map(cart => 
-            // cart.date === currdate ?
-            
-            (cart.products.length ?
-                (cart.products.findIndex(pro => (pro.productId === id)) === -1 ?
-                    null :
-                    (cart.products.map(pro => (pro.productId === id) ?
-                        pro.quantity != 1 ? (pro.quantity = pro.quantity - 1) : setDecreaseMsg(`Item has Quantity ${pro.quantity}. Cannot Decrease Quantity. Try to remove Item`) :
-                        null)
-                        // (cart.products.splice(cart.products.findIndex(pro=>(pro.productId===id),1))
-                    )
-                ) :
-                null) 
-                // : null
-                // alert(`Cart is Backdated. Can't Update. Try to update cart of Date: ${currdate}`)
-                ))
+        (cart.map(cart =>
+        // cart.date === currdate ?
+
+        (cart.products.length ?
+            (cart.products.findIndex(pro => (pro.productId === id)) === -1 ?
+                null :
+                (cart.products.map(pro => (pro.productId === id) ?
+                    pro.quantity != 1 ? (pro.quantity = pro.quantity - 1) : setDecreaseMsg(`Item has Quantity ${pro.quantity}. Cannot Decrease Quantity. Try to remove Item`) :
+                    null)
+                    // (cart.products.splice(cart.products.findIndex(pro=>(pro.productId===id),1))
+                )
+            ) :
+            null)
+            // : null
+            // alert(`Cart is Backdated. Can't Update. Try to update cart of Date: ${currdate}`)
+        ))
         // ):null
         // alert(`Id: ${id}, Qty: ${qty}`)
         navigate(`/`)
@@ -67,20 +67,20 @@ function CartProductContainer(props) {
 
     const handleIncrease = (id) => {
         // cart.length?
-        (cart.map(cart => 
-            // cart.date === currdate ?
-            (cart.products.length ?
-                // (cart.products.findIndex(pro => (pro.productId === id)) === -1 ?
-                //     null :
-                    (cart.products.map(pro => (pro.productId === id) ? ((pro.quantity = pro.quantity + 1),setDecreaseMsg('')) 
-                    :null)
-                        // (cart.products.splice(cart.products.findIndex(pro=>(pro.productId===id),1))
-                    // )
-                ) :
-                null) 
-                // : null
-                // alert(`Cart is Backdated. Can't Update. Try to update cart of Date: ${currdate}`)
-                ))
+        (cart.map(cart =>
+        // cart.date === currdate ?
+        (cart.products.length ?
+            // (cart.products.findIndex(pro => (pro.productId === id)) === -1 ?
+            //     null :
+            (cart.products.map(pro => (pro.productId === id) ? ((pro.quantity = pro.quantity + 1), setDecreaseMsg(''))
+                : null)
+                // (cart.products.splice(cart.products.findIndex(pro=>(pro.productId===id),1))
+                // )
+            ) :
+            null)
+            // : null
+            // alert(`Cart is Backdated. Can't Update. Try to update cart of Date: ${currdate}`)
+        ))
         // :null
         // alert(`Id: ${id}, Qty: ${qty}`)
         navigate(`/`)
@@ -88,18 +88,18 @@ function CartProductContainer(props) {
 
     const handleRemove = (id) => {
         // cart.length?(cart.findIndex(cart=>cart.date===currdate)===-1?null:
-        (cart.map(cart => 
-            // cart.date === currdate ?
-            (cart.products.length?
-                (cart.products.findIndex(pro => (pro.productId === id)) === -1 ?
-                    null :
-                    
-                    (cart.products.map(pro => (pro.productId === id)?(cart.products.splice(cart.products.findIndex(pro=>(pro.productId===id)),1)):null
+        (cart.map(cart =>
+        // cart.date === currdate ?
+        (cart.products.length ?
+            (cart.products.findIndex(pro => (pro.productId === id)) === -1 ?
+                null :
+
+                (cart.products.map(pro => (pro.productId === id) ? (cart.products.splice(cart.products.findIndex(pro => (pro.productId === id)), 1)) : null
                 ))) :
-                null) 
-                // : null
-                // alert(`Cart is Backdated. Can't Update. Try to update cart of Date: ${currdate}`)
-                ))
+            null)
+            // : null
+            // alert(`Cart is Backdated. Can't Update. Try to update cart of Date: ${currdate}`)
+        ))
         // ):null
         // alert(`Id: ${id}, Qty: ${qty}`)
         navigate(`/`)
@@ -107,40 +107,44 @@ function CartProductContainer(props) {
 
     return <div>
 
-        {props.individualCartProduct.loading?(<Spinner animation="border" variant="danger" />):(
-        props.individualCartProduct.cartproduct.filter(cartproduct => (props.id === cartproduct.id)).map(cartproduct =>
-            <div key={cartproduct.id}>
+        {props.individualCartProduct.loading ? (<Spinner animation="border" variant="danger" />) : (
+            props.individualCartProduct.cartproduct.filter(cartproduct => (props.id === cartproduct.id)).map(cartproduct =>
+                <div key={cartproduct.id}>
 
-                <>
-                <Table responsive>
-                    <tbody>
-                        <tr>
-                            <td className='cartitemimgcontainer'><Image src={cartproduct.image} className="imgclass2" alt={cartproduct.title} /></td>
-                            <td className='cartitemtitlecontainer'> 
-                                <tr>{cartproduct.title}</tr>
-                                <tr><Button variant="light" onClick={() => handleRemove(cartproduct.id)} ><div className='tablermvbtn'><AiOutlineClose size={23} /> Remove</div></Button></tr>
-                            </td>
-                            <td className='cartitempricecontainer'><div className='tableprice'><FaRupeeSign />{cartproduct.price}</div></td>
-                            <td className='cartitemqtycontainer'>
-                            <ButtonGroup >
-                                    <Button variant="light" onClick={() => handleDecrease(cartproduct.id)}>-</Button>
-                                    <Button variant="light" disabled>{props.quantity}</Button>
-                                    <Button variant="light" onClick={() => handleIncrease(cartproduct.id)}>+</Button>
-                                </ButtonGroup>
-                                <div className='decreasemsg'>{decreaseMsg}</div>
-                            </td>
-                            <td><div className='tableprice'><FaRupeeSign />{cartproduct.price * props.quantity}</div></td>
-                            {/* {length+cartproduct.price * props.quantity} */}
-                            
-                        </tr>
-                    </tbody>
-                </Table>
-                </>
-                
-            </div>
-            
-        ))}
-        
+                    <>
+                        <Table>
+                            <tbody>
+                                <tr>
+                                    <td className='cartitemdetailcontainer'>  
+                                        <tr>
+                                            <td className='cartitemimgcontainer'><Image src={cartproduct.image} className="imgclass2" alt={cartproduct.title} /></td>
+                                            <td className='cartitemtitlecontainer'>
+                                                <tr className='cartitemdescrip'>{cartproduct.title}</tr>
+                                                <tr><Button variant="light" onClick={() => handleRemove(cartproduct.id)} ><div className='tablermvbtn'><AiOutlineClose size={23} /> Remove</div></Button></tr>
+                                            </td>
+                                        </tr>
+                                    </td>
+                                    <td className='cartitempricecontainer'><div className='tableprice'><FaRupeeSign />{cartproduct.price}</div></td>
+                                    <td className='cartitemqtycontainer'>
+                                        <ButtonGroup >
+                                            <Button variant="light" onClick={() => handleDecrease(cartproduct.id)}>-</Button>
+                                            <Button variant="light" disabled>{props.quantity}</Button>
+                                            <Button variant="light" onClick={() => handleIncrease(cartproduct.id)}>+</Button>
+                                        </ButtonGroup>
+                                        <div className='decreasemsg'>{decreaseMsg}</div>
+                                    </td>
+                                    <td><div className='tableprice'><FaRupeeSign />{cartproduct.price * props.quantity}</div></td>
+                                    {/* {length+cartproduct.price * props.quantity} */}
+
+                                </tr>
+                            </tbody>
+                        </Table>
+                    </>
+
+                </div>
+
+            ))}
+
     </div>;
 }
 
