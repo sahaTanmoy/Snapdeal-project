@@ -6,6 +6,7 @@ import { Button, Card, Col, Container, Row, Spinner, Carousel, CarouselItem, Ima
 import { FaRupeeSign } from 'react-icons/fa'
 import { AiOutlineStar } from 'react-icons/ai';
 import { Link, Route, Routes } from 'react-router-dom'
+import Footer from './Footer';
 import axios from 'axios';
 
 function CategoryProductContainer() {
@@ -100,6 +101,10 @@ function CategoryProductContainer() {
                         )}
 
                     </Row>
+                </Container>
+                <Container>
+                    <Footer />
+
                 </Container>
             </div>
         ) : null)

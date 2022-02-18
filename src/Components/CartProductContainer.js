@@ -120,7 +120,7 @@ function CartProductContainer(props) {
                                 <tr>{cartproduct.title}</tr>
                                 <tr><Button variant="light" onClick={() => handleRemove(cartproduct.id)} ><div className='tablermvbtn'><AiOutlineClose size={23} /> Remove</div></Button></tr>
                             </td>
-                            <td className='cartitempricecontainer'><FaRupeeSign />{cartproduct.price}</td>
+                            <td className='cartitempricecontainer'><div className='tableprice'><FaRupeeSign />{cartproduct.price}</div></td>
                             <td className='cartitemqtycontainer'>
                             <ButtonGroup >
                                     <Button variant="light" onClick={() => handleDecrease(cartproduct.id)}>-</Button>
@@ -129,7 +129,7 @@ function CartProductContainer(props) {
                                 </ButtonGroup>
                                 <div className='decreasemsg'>{decreaseMsg}</div>
                             </td>
-                            <td><FaRupeeSign />{cartproduct.price * props.quantity}</td>
+                            <td><div className='tableprice'><FaRupeeSign />{cartproduct.price * props.quantity}</div></td>
                             {/* {length+cartproduct.price * props.quantity} */}
                             
                         </tr>

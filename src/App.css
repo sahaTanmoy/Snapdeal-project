@@ -518,6 +518,11 @@ img.hover-zoom:hover {
   display: flex;
 }
 
+.tableprice{
+  display: flex;
+  line-height: 16px;
+}
+
 .cartitempricecontainer{
   width: 20%;
 }

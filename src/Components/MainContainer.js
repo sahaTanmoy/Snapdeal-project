@@ -20,14 +20,9 @@ import UserProfileContainer from './UserProfileContainer'
 import AddedToCart from './AddedToCart'
 
 function MainContainer() {
-    return (
-        
-        <Provider store={store}>
-            
-        <BrowserRouter>
+    return (       
         
         <div>
-            {/* <h1>Snapdeal</h1> */}
             
             <NavBar1 />
             
@@ -49,15 +44,10 @@ function MainContainer() {
                     <Route path="*" element={<NoMatch />} />
                     {/* <Route path="/user/:userid/usercart" element={<ReduxUserCart />} /> */}
                     <Route path="/AddedToCart/:id" element={<AddedToCart />} />
+                    <Route path='/cart' element={<ReduxUserCart />} />
             </Routes>
             
-        </div>
-        
-        
-        </BrowserRouter>
-        
-        </Provider>
-        
+        </div>   
         
     )
 }
