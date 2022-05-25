@@ -41,6 +41,9 @@ function NavBar2() {
     console.log(225, totallen);
     // console.log("user", user);
     const navigate = useNavigate()
+    const handleLogin=()=>{
+        navigate("/login")
+    }
 
     return (
 
@@ -113,7 +116,7 @@ function NavBar2() {
                                                     <LogoutContainer />
                                                 </Dropdown.Item>}
                                         </Dropdown.Menu>
-                                    </Dropdown>) : (<Link to={`/login`} className='deco'><Button variant='danger'>Sign In <CgProfile size={20} /> </Button> </Link>)}
+                                    </Dropdown>) : (<Button variant='danger' onClick={handleLogin}>Sign In <CgProfile size={20} /> </Button>)}
 
                             </Nav.Link>
 

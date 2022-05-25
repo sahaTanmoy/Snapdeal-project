@@ -42,7 +42,7 @@ function AddedToCart(props) {
     const { image, title, price } = product
 
     return loader ?
-    (<div className='loader'><Spinner animation="border" variant="danger"/><h2>The product is loading. Please wait..</h2></div>) : (errMsg.length ? (<h2 className='errmsg'>{errMsg}</h2>) : (product ? (
+    (<div className='loader'><Spinner animation="border" variant="danger"/><h2>Please wait..</h2></div>) : (errMsg.length ? (<h2 className='errmsg'>{errMsg}</h2>) : (product ? (
 
         <div className='addedcartback'>.
         <Container>

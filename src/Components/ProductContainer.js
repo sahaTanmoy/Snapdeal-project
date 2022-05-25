@@ -48,7 +48,8 @@ function ProductContainer() {
     }, [])
 
 
-    return loader ? (
+    return <div>
+        {loader ? (
         <div className='loader'><Spinner animation="border" variant="danger" /><h2>loading..</h2></div>
     ) : errMsg.length ? (
         <h2 className='errmsg'>{errMsg}</h2>
@@ -85,9 +86,9 @@ function ProductContainer() {
 
                         {
                             products.slice(start, pageVisited + productsPerPage)
-                                .map(product =>
-
-                                    <Col className='mb-4' sm={3}>
+                                .map((product,index) =>
+                                    
+                                    <Col className='mb-4' sm={3} >
 
 
 
@@ -106,7 +107,8 @@ function ProductContainer() {
                                         </Link>
                                     </Card> */}
 
-                                        <div className='productcard'>
+                                        <div className='productcard' data-testid={`item-${index}`}>
+                                            
                                             <Link to={`/products/${product.id}`} className='deco1'>
                                                 <Row>
                                                     <div className='productcardimg'>
@@ -176,7 +178,8 @@ function ProductContainer() {
             </div>
 
         </div>
-    ) : null)
+    ) : null)}
+    </div>
 
 }
 

@@ -164,12 +164,12 @@ function LoginForm(props1) {
                                         <h4>Login On Snapdeal</h4>
                                         {/* <Form onSubmit={handleSubmitForm} > */}
                                         <Form onSubmit={handleSubmitForm}>
-                                            <Form.Label className='mb-2'>Email Address</Form.Label>
+                                            <Form.Label className='mb-2' aria-label="Email Address">Email Address</Form.Label>
                                             <Form.Control className='mb-1' type="email" placeholder='Enter Email Address'
                                                 value={email} onChange={e => setEmail(e.target.value.toLowerCase())}></Form.Control>
                                             <div className='frminputerr'>{emailErr}</div>
 
-                                            <Form.Label className='mb-2'>Password</Form.Label>
+                                            <Form.Label className='mb-2' aria-label="Password">Password</Form.Label>
                                             <Form.Control className='mb-1' type="password" placeholder='Enter Password'
                                                 value={password} onChange={e => setPassword(e.target.value)}></Form.Control>
                                             <div className='frminputerr'>{passErr}</div>

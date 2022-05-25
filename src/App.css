@@ -525,11 +525,14 @@ img.hover-zoom:hover {
 
 .tablermvbtn{
   display: flex;
+  line-height: 14px;
+  font-size: 14px;
 }
 
 .tableprice{
   display: flex;
-  line-height: 16px;
+  line-height: 14px;
+  padding-top: 7px;
 }
 
 .cartitempricecontainer{

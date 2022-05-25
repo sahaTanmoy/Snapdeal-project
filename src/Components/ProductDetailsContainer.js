@@ -123,7 +123,8 @@ function ProductDetailsContainer() {
         navigate(`/AddedToCart/${particularProduct.id}`)
     }
 
-    return loader ?
+    return <div>
+    {loader ?
         (<div className='loader'><Spinner animation="border" variant="danger"/><h2>The product is loading. Please wait..</h2></div>) : (errMsg.length ? (<h2 className='errmsg'>{errMsg}</h2>) : (particularProduct ? (
             <div className='productback'>
                 <Container>
@@ -312,7 +313,8 @@ function ProductDetailsContainer() {
                     <Footer />
                 </Container>
             </div>
-        ) : null))
+        ) : null))} 
+        </div>
 }
 
 
